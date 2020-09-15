@@ -8,12 +8,6 @@ const path = require('path');
 
 
 
-const serviceAccount = require("./ofimuebles-4518c-firebase-adminsdk-3j00i-d706022d52.json");
-
-admin.initializeApp({
-  credential: admin.credential.cert(serviceAccount),
-  databaseURL: "https://ofimuebles-4518c.firebaseio.com"
-});
 
 
 

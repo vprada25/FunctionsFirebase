@@ -1,7 +1,7 @@
-//const { firebase } = require('../configFirebase');
+const { firebase } = require('../../configFirebase');
 
 const controller = {};
-//const db = firebase.firestore();
+const db = firebase.firestore();
 
 controller.home = (req, res) =>{
     res.render('index.hbs')
