@@ -11,5 +11,9 @@ router.get('/login', controller.login)
 router.get('/register', controller.register)
 router.get('/admin', controller.admin)
 
+//services
+router.post('/register', controller.save)
+
+
 
 module.exports = router;
