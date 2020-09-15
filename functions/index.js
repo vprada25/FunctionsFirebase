@@ -5,7 +5,11 @@ const exphbs = require('express-handlebars');
 const app = express();
 const path = require('path');
 
-admin.initializeApp();
+
+
+
+
+
 
 // app.set('port',  4000);
 // // Create and Deploy Your First Cloud Functions
@@ -23,9 +27,7 @@ admin.initializeApp();
 //app.use(require(path.join(__dirname, './src/routes/index')));
 app.use(require('./src/routes/index'));
 
-/*app.get('/',(req,res)=>{
-    res.render("./src/views/index.hbs");
-});*/
+
 
 app.set('views', path.join(__dirname, './src/views'));
 

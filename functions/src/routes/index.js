@@ -1,26 +1,15 @@
 const { Router } = require('express');
 const router = Router();
 
-router.get('/', (req, res) => {
-    console.log('holaaaa')
-    res.render('index.hbs')
-})
+const controller = require('../controller/admin.controller');
 
-router.get('/about', (req, res) => {
-    res.render('./layouts/about-us/about.hbs')
-})
 
-router.get('/login', (req, res) => {
-    res.render('./layouts/login/login.hbs')
-})
-
-router.get('/register', (req, res) => {
-    res.render('./layouts/register/register.hbs')
-})
-
-router.get('/admin', (req, res) => {
-    res.render('./layouts/admin/admin.hbs')
-})
+//views
+router.get('/', controller.home);
+router.get('/about', controller.about)
+router.get('/login', controller.login)
+router.get('/register', controller.register)
+router.get('/admin', controller.admin)
 
 
 module.exports = router;
