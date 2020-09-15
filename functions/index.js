@@ -5,7 +5,17 @@ const exphbs = require('express-handlebars');
 const app = express();
 const path = require('path');
 
-admin.initializeApp();
+
+
+
+const serviceAccount = require("./ofimuebles-4518c-firebase-adminsdk-3j00i-d706022d52.json");
+
+admin.initializeApp({
+  credential: admin.credential.cert(serviceAccount),
+  databaseURL: "https://ofimuebles-4518c.firebaseio.com"
+});
+
+
 
 // app.set('port',  4000);
 // // Create and Deploy Your First Cloud Functions
