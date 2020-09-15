@@ -1,10 +1,14 @@
 const { Router } = require('express');
 const router = Router();
 
-router.get('/', (req, res) => {
-    console.log('holaaaa')
-    res.render('index.hbs')
-})
+const controller = require('../controller/admin.controller');
+
+
+//views
+router.get('/', controller.home);
+
+
+
 
 router.get('/about', (req, res) => {
     res.render('./layouts/about-us/about.hbs')
