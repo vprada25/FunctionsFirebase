@@ -23,9 +23,7 @@ admin.initializeApp();
 //app.use(require(path.join(__dirname, './src/routes/index')));
 app.use(require('./src/routes/index'));
 
-/*app.get('/',(req,res)=>{
-    res.render("./src/views/index.hbs");
-});*/
+
 
 app.set('views', path.join(__dirname, './src/views'));
 
