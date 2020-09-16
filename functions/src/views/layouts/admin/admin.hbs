@@ -57,10 +57,9 @@
                 <section>
 
                     <div class="col-9">
-                        <!-- AGREGAR PRODUCTOS 
-              
-              
-              -->
+
+                        <!-- AGREGAR PRODUCTOS -->
+
                         <div class="tab-content" id="v-pills-tabContent">
                             <div class="tab-pane fade show active" id="v-pills-products" role="tabpanel"
                                 aria-labelledby="v-pills-products">
@@ -68,7 +67,8 @@
                                     <div class="form-row">
                                         <div class="col-md-6 mb-3">
                                             <label for="nameproduct">Nombre Producto</label>
-                                            <input name="nameproduct" type="text" class="form-control" value="" required>
+                                            <input name="nameproduct" type="text" class="form-control" value=""
+                                                required>
                                         </div>
                                         <div class="col-md-6 mb-3">
                                             <label for="priceproduct">Precio</label>
@@ -114,7 +114,7 @@
 
                                         </div>
                                     </div>
-                                    <button id="addproduct"  type="submit" class="btn btn-primary ">Agregar
+                                    <button id="addproduct" type="submit" class="btn btn-primary ">Agregar
                                         Producto</button>
                                 </form>
 
@@ -134,15 +134,22 @@
                                             <th>Categoria Producto</th>
                                         </tr>
                                     </thead>
-                                    <button type="button" class="btn btn-primary openBtn" data-toggle="modal"
-                                        onclick="window.location.href = '/'">
-                                        ir al portafolio
-                                    </button>
+
                                     <input class="d-none" type="text" id="id">
+                                    <form action="/admin/getProduct" method="get">
+                                        <button class="btn btn-primary openBtn" data-toggle="modal" type="submit">
+                                            ver productos
+                                        </button>
+                                    </form>
+                                    {{#each product}}
+
+
                                     <tbody id="listproducts">
-
-
+                                        <td>{{nombre}}</td>
+                                        <td>{{precio}}</td>
+                                        <td>{{categoria}}</td>
                                     </tbody>
+                                    {{/each}}
                                 </table>
 
 
@@ -150,6 +157,7 @@
 
                             <div class="tab-pane fade" id="v-pills-users" role="tabpanel"
                                 aria-labelledby="v-pills-product-tab">
+
                                 <table class="table table-responsive table-bordered">
                                     <thead>
                                         <tr>
@@ -161,10 +169,11 @@
                                             <th>Email </th>
                                         </tr>
                                     </thead>
-                                    <button type="button" class="btn btn-primary openBtn" data-toggle="modal"
-                                        onclick="window.location.href = '/'">
-                                        ir al portafolio
-                                    </button>
+                                    <form action="/admin/getUsers" method="get">
+                                        <button class="btn btn-primary openBtn" data-toggle="modal" type="submit">
+                                            ver Usuarios
+                                        </button>
+                                    </form>
                                     <input class="d-none" type="text" id="id">
                                     {{#each user}}
                                     <tbody id="listusers">

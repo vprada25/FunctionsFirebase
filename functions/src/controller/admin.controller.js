@@ -1,6 +1,7 @@
 const { firebase } = require('../../configFirebase');
 
 const controller = {};
+
 const db = firebase.firestore();
 
 controller.home = (req, res) => {
@@ -16,30 +17,67 @@ controller.register = (req, res) => {
     res.render('./layouts/register/register.hbs')
 }
 
-controller.admin = (req, res) => {
-
-
-    let listUser = [];
-
-    db.collection("usuario").get()
-        .then((snapshot) => {
-            snapshot.forEach((doc) => {
-                listUser.push(doc.data())
-            });
-            res.render('./layouts/admin/admin.hbs', {
-                user: listUser
-
-            });
-            console.log(listUser);
-
-        })
-        .catch(function (error) {
-            console.log("error :", error);
-        });
+controller.admin = async (req, res) => {
+    res.render('./layouts/admin/admin.hbs');
 
 
 }
 
+controller.getProduct = async (req, res) => {
+    res.render('./layouts/admin/admin.hbs',
+        { product: await getProduct() });
+
+
+}
+controller.getUser = async (req, res) => {
+    res.render('./layouts/admin/admin.hbs',
+        { user: await getUser() });
+
+
+}
+
+
+const getUser = async () => {
+    return new Promise(resolve => {
+        let listUser = [];
+        db.collection("usuario").get()
+            .then((snapshot) => {
+                snapshot.forEach((doc) => {
+                    listUser.push(doc.data())
+
+                });
+
+                resolve(listUser);
+                // console.log(listUser);
+
+            })
+            .catch(function (error) {
+                console.log("error :", error);
+            });
+
+    })
+}
+
+const getProduct = async () => {
+    return new Promise(resolve => {
+        let listProduct = [];
+        db.collection("producto").get()
+            .then((snapshot) => {
+                snapshot.forEach((doc) => {
+                    listProduct.push(doc.data())
+
+                });
+
+                resolve(listProduct);
+                // console.log(listUser);
+
+            })
+            .catch(function (error) {
+                console.log("error :", error);
+            });
+
+    })
+}
 
 
 
@@ -95,27 +133,6 @@ controller.saveProduct = (req, res) => {
 
 
 }
-
-controller.listUsers = (req, res) => {
-
-    let user = db.collection('usuario');
-    let listUsers = user.get()
-        .then(snapshot => {
-            snapshot.forEach(doc => {
-                console.log(doc.id, '=>', doc.data());
-            });
-        })
-        .catch(err => {
-            console.log('Error getting documents', err);
-        });
-
-}
-
-
-
-
-
-
 
 
 

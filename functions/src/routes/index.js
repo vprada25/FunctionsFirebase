@@ -18,10 +18,13 @@ router.post('/admin/addproduct', controller.saveProduct)
 
 
 router.get('/login', controller.admin)
+router.get('/admin/getProduct', controller.getProduct)
+router.get('/admin/getUsers', controller.getUser)
+
 
 
 //services
-//router.post('/register', controller.save)
+router.post('/register', controller.saveUser)
 router.post('/admin', auth.auth);
 router.post('/login', auth.ControlLogin);
 
