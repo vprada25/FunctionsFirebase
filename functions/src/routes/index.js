@@ -9,10 +9,12 @@ router.get('/', controller.home);
 router.get('/about', controller.about)
 router.get('/login', controller.login)
 router.get('/register', controller.register)
-router.get('/admin', controller.admin)
+router.get('/admin', controller.admin )
 
 //services
-router.post('/register', controller.save)
+router.post('/register', controller.saveUser)
+router.post('/admin/addproduct', controller.saveProduct)
+
 
 
 

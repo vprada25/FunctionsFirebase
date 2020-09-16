@@ -64,15 +64,15 @@
                         <div class="tab-content" id="v-pills-tabContent">
                             <div class="tab-pane fade show active" id="v-pills-products" role="tabpanel"
                                 aria-labelledby="v-pills-products">
-                                <form>
+                                <form method="post" action="/admin/addproduct">
                                     <div class="form-row">
                                         <div class="col-md-6 mb-3">
                                             <label for="nameproduct">Nombre Producto</label>
-                                            <input id="nameproduct" type="text" class="form-control" value="" required>
+                                            <input name="nameproduct" type="text" class="form-control" value="" required>
                                         </div>
                                         <div class="col-md-6 mb-3">
                                             <label for="priceproduct">Precio</label>
-                                            <input id="priceproduct" type="number" class="form-control" value=""
+                                            <input name="priceproduct" type="number" class="form-control" value=""
                                                 required>
                                         </div>
                                     </div>
@@ -80,8 +80,8 @@
 
                                         <div class="col-md-3 mb-3">
                                             <label for="categoryproduct">Categoria</label>
-                                            <select class="custom-select" id="categoryproduct" required>
-                                                <option selected disabled value="">...</option>
+                                            <select class="custom-select" name="categoryproduct" required>
+                                                <option selected disabled value=""></option>
                                                 <option>COMEDORES</option>
                                                 <option>SALAS</option>
                                                 <option>ALCOBAS</option>
@@ -114,11 +114,10 @@
 
                                         </div>
                                     </div>
-
+                                    <button id="addproduct"  type="submit" class="btn btn-primary ">Agregar
+                                        Producto</button>
                                 </form>
-                                <button id="addproduct" onclick="saveproducts()" class="btn
-                    btn-primary d-none">Agregar
-                                    Producto</button>
+
                                 <img src="" alt="" name="imgSubida" id="imgSubida">
                             </div>
 
@@ -147,86 +146,38 @@
                                 </table>
 
 
+                            </div>
 
+                            <div class="tab-pane fade" id="v-pills-users" role="tabpanel"
+                                aria-labelledby="v-pills-product-tab">
+                                <table class="table table-responsive table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th>Nombre Usuario</th>
+                                            <th>Primer Nombre</th>
+                                            <th>Segundo Nombre</th>
+                                            <th>Primer Apellido</th>
+                                            <th>Segundo Apellido</th>
+                                            <th>Email </th>
+                                        </tr>
+                                    </thead>
+                                    <button type="button" class="btn btn-primary openBtn" data-toggle="modal"
+                                        onclick="window.location.href = '/'">
+                                        ir al portafolio
+                                    </button>
+                                    <input class="d-none" type="text" id="id">
+                                    {{#each user}}
+                                    <tbody id="listusers">
+                                        <td>{{usuario}}</td>
+                                        <td>{{primernombre}}</td>
+                                        <td>{{segundonombre}}</td>
+                                        <td>{{primerapellido}}</td>
+                                        <td>{{segundoapellido}}</td>
+                                        <td>{{emailUser}}</td>
 
-                                <div class="modal fade" id="edit" tabindex="-1" role="dialog"
-                                    aria-labelledby="editarLabel" aria-hidden="true">
-                                    <div class="modal-dialog" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="editLabel">Actualizar
-                                                    Datos</h5>
-                                                <button type="button" class="close" data-dismiss="modal"
-                                                    aria-label="Close">
-                                                    <span aria-hidden="true">&times;</span>
-                                                </button>
-                                            </div>
-                                            <div class="modal-body">
-
-                                                <form id="addproducts">
-                                                    <div class="form-row">
-                                                        <div class="col-md-12 mb-3">
-                                                            <label for="nameproduct1">Nombre Producto</label>
-                                                            <input id="nameproduct1" type="text" class="form-control"
-                                                                value="" required>
-                                                        </div>
-                                                        <div class="col-md-12 mb-3">
-                                                            <label for="priceproduct1">Precio</label>
-                                                            <input id="priceproduct1" type="number" class="form-control"
-                                                                value="" required>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-row">
-
-                                                        <div class="col-md-12 mb-3">
-                                                            <label for="categoryproduct1">Categoria</label>
-                                                            <select class="custom-select" id="categoryproduct1"
-                                                                required>
-                                                                <option selected disabled value="">...</option>
-                                                                <option>COMEDORES</option>
-                                                                <option>SALAS</option>
-                                                                <option>ALCOBAS</option>
-                                                                <option>OFICINA</option>
-                                                                <option>DECORACION</option>
-                                                                <option>SILLAS</option>
-                                                                <option>OTRO</option>
-                                                            </select>
-                                                        </div>
-                                                        <div class="col-md-12 mb-3">
-                                                            <div class="form-group">
-                                                                <label for="photoproduct1">Foto Producto</label>
-                                                                <div class="input-group">
-                                                                    <div class="custom-file">
-                                                                        <input type="file" class="custom-file-input"
-                                                                            id="archivo1" name="archivo1"
-                                                                            aria-describedby="inputGroupFileAddon0">
-                                                                        <label class="custom-file-label"
-                                                                            for="inputGroupFile04">Elegir imagen</label>
-                                                                    </div>
-                                                                    <div class="input-group-append">
-                                                                        <button class="btn btn-outline-secondary"
-                                                                            type="button" id="inputGroupFileAddon0"
-                                                                            onclick="subirImagen()">subir
-                                                                            Imagen</button>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </form>
-
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary"
-                                                    data-dismiss="modal">Cerrar</button>
-                                                <button type="button" class="btn btn-primary" data-dismiss="modal"
-                                                    onclick="act()">confirmar</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-
+                                    </tbody>
+                                    {{/each}}
+                                </table>
                             </div>
                         </div>
                 </section>

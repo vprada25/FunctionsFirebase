@@ -15,14 +15,35 @@ controller.login = (req, res) => {
 controller.register = (req, res) => {
     res.render('./layouts/register/register.hbs')
 }
+
 controller.admin = (req, res) => {
-    res.render('./layouts/admin/admin.hbs')
+
+
+    let listUser = [];
+
+    db.collection("usuario").get()
+        .then((snapshot) => {
+            snapshot.forEach((doc) => {
+                listUser.push(doc.data())
+            });
+            res.render('./layouts/admin/admin.hbs', {
+                user: listUser
+
+            });
+            console.log(listUser);
+
+        })
+        .catch(function (error) {
+            console.log("error :", error);
+        });
+
+
 }
 
 
 
 
-controller.save = (req, res) => {
+controller.saveUser = (req, res) => {
     console.log(req.body);
 
     firebase.auth().createUserWithEmailAndPassword(req.body.emailUser, req.body.contrasena)
@@ -52,9 +73,43 @@ controller.save = (req, res) => {
 
 
 }
+controller.saveProduct = (req, res) => {
+    console.log(req.body);
+
+
+    db.collection("producto").add({
+        nombre: req.body.nameproduct,
+        precio: req.body.priceproduct,
+        categoria: req.body.categoryproduct,
+
+
+    })
+        .then((docRef) => {
+            console.log("Document written with ID: ", docRef.id);
+            res.render('./layouts/admin/admin.hbs')
+        })
+        .catch((error) => {
+            console.error("Error: ", error);
+        });
 
 
 
+}
+
+controller.listUsers = (req, res) => {
+
+    let user = db.collection('usuario');
+    let listUsers = user.get()
+        .then(snapshot => {
+            snapshot.forEach(doc => {
+                console.log(doc.id, '=>', doc.data());
+            });
+        })
+        .catch(err => {
+            console.log('Error getting documents', err);
+        });
+
+}
 
 
 

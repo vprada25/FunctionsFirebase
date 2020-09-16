@@ -7,10 +7,6 @@ const path = require('path');
 
 
 
-
-
-
-
 // app.set('port',  4000);
 // // Create and Deploy Your First Cloud Functions
 // // https://firebase.google.com/docs/functions/write-firebase-functions
