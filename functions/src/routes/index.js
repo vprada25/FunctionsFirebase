@@ -18,12 +18,12 @@ router.post('/admin/addproduct', controller.saveProduct)
 
 
 router.get('/login', controller.admin)
-
+router.get('/admin', controller.login)
 
 //services
 //router.post('/register', controller.save)
 router.post('/admin', auth.auth);
-router.post('/login', auth.ControlLogin);
+router.post('/login',controller.ControlLogin);
 
 
 module.exports = router;

@@ -112,7 +112,22 @@ controller.listUsers = (req, res) => {
 }
 
 
+var emailUsuarioLogueado="hola";
 
+controller.ControlLogin=() =>{
+  
+    firebase.auth().onAuthStateChanged(function (user) {
+      if (user) {
+        emailUsuarioLogueado = user.email;
+      }
+      else {
+        res.render('./layouts/login/login.hbs');
+      }
+    });
+  
+
+
+}
 
 
 

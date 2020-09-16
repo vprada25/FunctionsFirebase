@@ -44,21 +44,6 @@ controller.auth=(req, res)=>{
    
 }
 
-var emailUsuarioLogueado=null;
 
-controller.ControlLogin=() =>{
-  
-    firebase.auth().onAuthStateChanged(function (user) {
-      if (user) {
-        emailUsuarioLogueado = user.email;
-      }
-      else {
-        res.render('./layouts/login/login.hbs');
-      }
-    });
-  
-
-
-}
 
 module.exports = controller;
