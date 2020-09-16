@@ -114,12 +114,14 @@ controller.listUsers = (req, res) => {
 
 var emailUsuarioLogueado="hola";
 
-controller.ControlLogin=() =>{
+controller.ControlLogin=(res, req) =>{
   
     firebase.auth().onAuthStateChanged(function (user) {
       if (user) {
         emailUsuarioLogueado = user.email;
       }
+      // reques flash
+      // body parce
       else {
         res.render('./layouts/login/login.hbs');
       }

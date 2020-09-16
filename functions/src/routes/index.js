@@ -1,8 +1,10 @@
 const { Router } = require('express');
+const { admin } = require('../controller/admin.controller');
 const router = Router();
 
 const controller = require('../controller/admin.controller');
 const auth = require('../controller/auth.controller');
+
 
 
 //views
@@ -12,6 +14,7 @@ router.get('/login', controller.login)
 router.get('/register', controller.register)
 router.get('/admin', controller.admin )
 
+
 //services
 router.post('/register', controller.saveUser)
 router.post('/admin/addproduct', controller.saveProduct)
@@ -19,6 +22,8 @@ router.post('/admin/addproduct', controller.saveProduct)
 
 router.get('/login', controller.admin)
 router.get('/admin', controller.login)
+
+
 
 //services
 //router.post('/register', controller.save)
