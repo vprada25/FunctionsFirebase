@@ -64,7 +64,23 @@ const getProduct = async () => {
         db.collection("producto").get()
             .then((snapshot) => {
                 snapshot.forEach((doc) => {
-                    listProduct.push(doc.data())
+                    let id = doc.id;
+                    let nombre = doc.data().nombre;
+                    let precio = doc.data().precio;
+                    let categoria = doc.data().categoria;
+
+                    
+
+                    producto = {
+                        id: id,
+                        nombre: nombre,
+                        precio: precio,
+                        categoria: categoria
+                    }
+
+
+                    listProduct.push(producto);
+
 
                 });
 
@@ -78,6 +94,10 @@ const getProduct = async () => {
 
     })
 }
+
+
+
+
 
 
 
@@ -116,6 +136,7 @@ controller.saveProduct = (req, res) => {
 
 
     db.collection("producto").add({
+
         nombre: req.body.nameproduct,
         precio: req.body.priceproduct,
         categoria: req.body.categoryproduct,
@@ -123,6 +144,7 @@ controller.saveProduct = (req, res) => {
 
     })
         .then((docRef) => {
+
             console.log("Document written with ID: ", docRef.id);
             res.render('./layouts/admin/admin.hbs')
         })
@@ -150,20 +172,20 @@ controller.listUsers = (req, res) => {
 }
 
 
-var emailUsuarioLogueado="hola";
+var emailUsuarioLogueado = "hola";
 
-controller.ControlLogin=(res, req) =>{
-  
+controller.ControlLogin = (res, req) => {
+
     firebase.auth().onAuthStateChanged(function (user) {
-      if (user) {
-        emailUsuarioLogueado = user.email;
-      }
-     
-      else {
-        res.render('./layouts/login/login.hbs');
-      }
+        if (user) {
+            emailUsuarioLogueado = user.email;
+        }
+
+        else {
+            res.render('./layouts/login/login.hbs');
+        }
     });
-  }
+}
 
 
 

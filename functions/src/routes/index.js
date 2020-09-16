@@ -1,7 +1,8 @@
 const { Router } = require('express');
 const { admin } = require('../controller/admin.controller');
 const router = Router();
-
+const { firebase } = require('../../configFirebase');
+const db = firebase.firestore();
 const controller = require('../controller/admin.controller');
 const auth = require('../controller/auth.controller');
 
@@ -24,6 +25,15 @@ router.get('/login', controller.admin)
 router.get('/admin/getProduct', controller.getProduct)
 router.get('/admin/getUsers', controller.getUser)
 
+router.get('/deleteProduct/:id',(req, res) => {
+    db.collection("products").doc(req.params.id).delete()
+    console.log(req.params.id)
+    .then(() => {
+        res.render('./layouts/admin/admin.hbs');
+    }).catch((error) => {
+      console.error("Error: ", error);
+    });
+});
 
 
 
