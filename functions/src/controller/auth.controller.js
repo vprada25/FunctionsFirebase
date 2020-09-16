@@ -44,8 +44,20 @@ controller.auth=(req, res)=>{
    
 }
 
-controller.ControlLogin=() =>{    
-console.log('Cpmsp--------------');
+var emailUsuarioLogueado=null;
+
+controller.ControlLogin=() =>{
+  
+    firebase.auth().onAuthStateChanged(function (user) {
+      if (user) {
+        emailUsuarioLogueado = user.email;
+      }
+      else {
+        res.render('./layouts/login/login.hbs');
+      }
+    });
+  
+
 
 }
 

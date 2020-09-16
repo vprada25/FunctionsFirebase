@@ -19,9 +19,11 @@ router.post('/admin/addproduct', controller.saveProduct)
 
 router.get('/login', controller.admin)
 
+
 //services
-router.post('/register', controller.save)
+//router.post('/register', controller.save)
 router.post('/admin', auth.auth);
+router.post('/login', auth.ControlLogin);
 
 
 module.exports = router;
