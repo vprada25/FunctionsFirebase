@@ -2,6 +2,7 @@ const { Router } = require('express');
 const router = Router();
 
 const controller = require('../controller/admin.controller');
+const auth = require('../controller/auth.controller');
 
 
 //views
@@ -9,11 +10,11 @@ router.get('/', controller.home);
 router.get('/about', controller.about)
 router.get('/login', controller.login)
 router.get('/register', controller.register)
-router.get('/admin', controller.admin)
+router.get('/login', controller.admin)
 
 //services
 router.post('/register', controller.save)
-
+router.post('/admin', auth.auth);
 
 
 module.exports = router;
