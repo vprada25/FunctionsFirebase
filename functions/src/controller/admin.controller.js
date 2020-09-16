@@ -120,16 +120,12 @@ controller.ControlLogin=(res, req) =>{
       if (user) {
         emailUsuarioLogueado = user.email;
       }
-      // reques flash
-      // body parce
+     
       else {
         res.render('./layouts/login/login.hbs');
       }
     });
-  
-
-
-}
+  }
 
 
 
