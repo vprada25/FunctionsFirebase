@@ -2,6 +2,7 @@ const { Router } = require('express');
 const router = Router();
 
 const controller = require('../controller/admin.controller');
+const auth = require('../controller/auth.controller');
 
 
 //views
@@ -16,6 +17,11 @@ router.post('/register', controller.saveUser)
 router.post('/admin/addproduct', controller.saveProduct)
 
 
+router.get('/login', controller.admin)
+
+//services
+router.post('/register', controller.save)
+router.post('/admin', auth.auth);
 
 
 module.exports = router;
