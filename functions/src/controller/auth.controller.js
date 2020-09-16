@@ -44,4 +44,9 @@ controller.auth=(req, res)=>{
    
 }
 
+controller.ControlLogin=() =>{    
+console.log('Cpmsp--------------');
+
+}
+
 module.exports = controller;
