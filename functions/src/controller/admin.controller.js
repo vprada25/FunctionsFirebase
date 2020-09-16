@@ -134,6 +134,40 @@ controller.saveProduct = (req, res) => {
 
 }
 
+controller.listUsers = (req, res) => {
+
+    let user = db.collection('usuario');
+    let listUsers = user.get()
+        .then(snapshot => {
+            snapshot.forEach(doc => {
+                console.log(doc.id, '=>', doc.data());
+            });
+        })
+        .catch(err => {
+            console.log('Error getting documents', err);
+        });
+
+}
+
+
+var emailUsuarioLogueado="hola";
+
+controller.ControlLogin=(res, req) =>{
+  
+    firebase.auth().onAuthStateChanged(function (user) {
+      if (user) {
+        emailUsuarioLogueado = user.email;
+      }
+     
+      else {
+        res.render('./layouts/login/login.hbs');
+      }
+    });
+  }
+
+
+
+
 
 
 
