@@ -29,7 +29,6 @@ router.get('/admin/getUsers', controller.getUser)
 
 router.get('/deleteProduct/:id',(req, res) => {
     
-
     console.log(req.params.id);
     db.collection("producto").doc(req.params.id).delete()
     .then(() => {

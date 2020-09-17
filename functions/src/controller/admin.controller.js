@@ -69,7 +69,7 @@ const getProduct = async () => {
                     let precio = doc.data().precio;
                     let categoria = doc.data().categoria;
 
-                    
+
 
                     producto = {
                         id: id,
