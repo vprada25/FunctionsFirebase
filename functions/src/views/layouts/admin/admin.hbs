@@ -63,7 +63,7 @@
 
                         <!-- AGREGAR PRODUCTOS -->
 
-                        <div class="tab-content" id="v-pills-tabContent">
+                        <div class="tab-content d-flex" id="v-pills-tabContent">
                             <div class="tab-pane fade show active" id="v-pills-products" role="tabpanel"
                                 aria-labelledby="v-pills-products">
                                 <form method="post" action="/admin/addproduct">
@@ -126,68 +126,71 @@
 
 
                             <!-- LISTAR PRODUCTOS -->
-
-                            <div class="tab-pane fade" id="v-pills-listproduct" role="tabpanel"
-                                aria-labelledby="v-pills-product-tab">
-                                <table class="table table-responsive table-bordered">
-                                    <thead>
-                                        <tr>
-                                            <th>Nombre Producto</th>
-                                            <th>Precio Producto</th>
-                                            <th>Categoria Producto</th>
-                                        </tr>
-                                    </thead>
-
-
-                                    <form action="/" method="get">
-                                        <button class="btn btn-primary openBtn" data-toggle="modal" type="submit">
-                                            ver portafolio
-                                        </button>
-                                    </form>
-                                    {{#each product}}
+                            
+                                <div class="tab-pane fade hidden" id="v-pills-listproduct" role="tabpanel"
+                                    aria-labelledby="v-pills-product-tab">
+                                    <table class="table-responsive">
+                                    <table class="table  table-bordered table-hover ">
+                                        <thead class="thead-dark">
+                                            <tr>
+                                                <th>Nombre Producto</th>
+                                                <th>Precio Producto</th>
+                                                <th>Categoria Producto</th>
+                                            </tr>
+                                        </thead>
 
 
-                                    <tbody id="listproducts">
-
-                                        <td>{{nombre}}</td>
-                                        <td>{{precio}}</td>
-                                        <td>{{categoria}}</td>
-                                        <td name="id" class="d-none" {{id}}></td>
-
-                                        <form action="/deleteProduct/{{id}}" method="get">
-                                            <td>
-                                                <button type="submit" class="btn btn-danger openBtn" data-toggle="modal"
-                                                    class="btn btn-danger">
-                                                    Eliminar
-                                                </button>
-                                            </td>
+                                        <form action="/" method="get">
+                                            <button class="btn btn-primary openBtn" data-toggle="modal" type="submit">
+                                                ver portafolio
+                                            </button>
                                         </form>
-                                        <form action="/productId/{{id}}" method="get">
-                                            <td>
-                                                <button type="submit" class="btn btn-primary openBtn"
-                                                    data-toggle="modal" class="btn btn-danger">
-                                                    Editar
-                                                </button>
-                                            </td>
-                                        </form>
-
-                                        {{>modal}}
-                                    </tbody>
-
-                                    {{/each}}
-
-                                </table>
+                                        {{#each product}}
 
 
+                                        <tbody id="listproducts" class="">
+
+                                            <td>{{nombre}}</td>
+                                            <td>{{precio}}</td>
+                                            <td>{{categoria}}</td>
+                                            <td name="id" class="d-none" {{id}}></td>
+
+                                            <form action="/deleteProduct/{{id}}" method="get">
+                                                <td>
+                                                    <button type="submit" class="btn btn-danger openBtn"
+                                                        data-toggle="modal" class="btn btn-danger">
+                                                        Eliminar
+                                                    </button>
+                                                </td>
+                                            </form>
+                                            <form action="/productId/{{id}}" method="get">
+                                                <td>
+                                                    <button type="submit" class="btn btn-primary openBtn"
+                                                        data-toggle="modal" class="btn btn-danger">
+                                                        Editar
+                                                    </button>
+                                                </td>
+                                            </form>
+
+                                            {{>modal}}
+                                        </tbody>
+
+                                        {{/each}}
+
+                                    </table>
+                                    </table>
 
 
-                            </div>
+
+
+                                </div>
+                            
 
                             <div class="tab-pane fade" id="v-pills-users" role="tabpanel"
                                 aria-labelledby="v-pills-product-tab">
 
                                 <table class="table table-responsive table-bordered">
-                                    <thead>
+                                    <thead class="thead-dark">
                                         <tr>
                                             <th>Nombre Usuario</th>
                                             <th>Primer Nombre</th>

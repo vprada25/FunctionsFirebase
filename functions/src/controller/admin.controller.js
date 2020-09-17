@@ -3,6 +3,13 @@ const { firebase } = require('../../configFirebase');
 const controller = {};
 
 const db = firebase.firestore();
+const Swal = require('sweetalert2')
+
+Swal.fire(
+    'Good job!',
+    'You clicked the button!',
+    'success'
+)
 
 controller.home = async (req, res) => {
     res.render('../views/index.hbs',
@@ -41,7 +48,7 @@ controller.admin = async (req, res) => {
     res.render('./layouts/admin/admin.hbs',
         {
             user: await getUser(),
-            product : await getProduct()
+            product: await getProduct()
         })
 
     firebase.auth().onAuthStateChanged(function (user) {
@@ -49,7 +56,7 @@ controller.admin = async (req, res) => {
             console.log(user)
         }
         else {
-           console.log("error")
+            console.log("error")
         }
     });
 }
@@ -94,6 +101,7 @@ const getUser = async () => {
                     let segundonombre = doc.data().segundonombre;
                     let primerapellido = doc.data().primerapellido;
                     let segundoapellido = doc.data().segundoapellido;
+                    let email = doc.data().emailUser;
                     let usuario = doc.data().usuario;
                     let contrasena = doc.data().contrasena;
                     user = {
@@ -103,7 +111,8 @@ const getUser = async () => {
                         primerapellido: primerapellido,
                         segundoapellido: segundoapellido,
                         usuario: usuario,
-                        contrasena: contrasena
+                        contrasena: contrasena,
+                        emailUser : email
                     }
 
                     listUser.push(user)
@@ -184,7 +193,7 @@ const getProduct = async () => {
                 });
                 console.log(listProduct)
                 resolve(listProduct);
-                // console.log(listUser);
+
             })
             .catch(function (error) {
                 console.log("error :", error);
@@ -214,7 +223,7 @@ const getComedores = async () => {
                     listComedores.push(comedor);
                 });
                 resolve(listComedores)
-                // console.log(listUser);
+
             })
             .catch(function (error) {
                 console.log("error :", error);
@@ -242,7 +251,7 @@ const getSalas = async () => {
                     listSalas.push(salas);
                 });
                 resolve(listSalas)
-                // console.log(listUser);
+
             })
             .catch(function (error) {
                 console.log("error :", error);
@@ -270,7 +279,7 @@ const getAlcobas = async () => {
                     listAlcoba.push(alcobas);
                 });
                 resolve(listAlcoba)
-                // console.log(listUser);
+
             })
             .catch(function (error) {
                 console.log("error :", error);
@@ -298,7 +307,7 @@ const getOficina = async () => {
                     listoficina.push(oficina);
                 });
                 resolve(listoficina)
-                // console.log(listUser);
+
             })
             .catch(function (error) {
                 console.log("error :", error);
@@ -326,7 +335,7 @@ const getDecoracion = async () => {
                     listDecoracion.push(decoracion);
                 });
                 resolve(listDecoracion)
-                // console.log(listUser);
+
             })
             .catch(function (error) {
                 console.log("error :", error);
@@ -354,7 +363,7 @@ const getSillas = async () => {
                     listSillas.push(silla);
                 });
                 resolve(listSillas)
-                // console.log(listUser);
+
             })
             .catch(function (error) {
                 console.log("error :", error);
@@ -368,7 +377,6 @@ const getSillas = async () => {
 
 controller.act = (req, res) => {
     console.log(req.params.id);
-
     db.collection("producto").doc(req.params.id).update({
         name: nameproduct1.value,
         price: priceproduct1.value,
@@ -381,13 +389,10 @@ controller.act = (req, res) => {
         .catch((error) => {
             console.log("Error: ", error);
         });
-
-
 }
 
 controller.saveUser = (req, res) => {
     console.log(req.body);
-
     firebase.auth().createUserWithEmailAndPassword(req.body.emailUser, req.body.contrasena)
         .then(() => {
             db.collection("usuario").add({
@@ -414,6 +419,7 @@ controller.saveUser = (req, res) => {
 
 
 }
+
 controller.saveProduct = (req, res) => {
     console.log(req.body);
     db.collection("producto").add({
@@ -423,15 +429,14 @@ controller.saveProduct = (req, res) => {
     })
         .then((docRef) => {
             console.log("Document written with ID: ", docRef.id);
-            res.render('./layouts/admin/admin.hbs')
-        })
+
+            res.render('./layouts/admin/admin.hbs', Swal.fire('Good job!','You clicked the button!','success'))})
         .catch((error) => {
             console.error("Error: ", error);
         });
 }
 
 controller.listUsers = (req, res) => {
-
     let user = db.collection('usuario');
     let listUsers = user.get()
         .then(snapshot => {
@@ -442,7 +447,6 @@ controller.listUsers = (req, res) => {
         .catch(err => {
             console.log('Error getting documents', err);
         });
-
 }
 
 var emailUsuarioLogueado = "hola";
