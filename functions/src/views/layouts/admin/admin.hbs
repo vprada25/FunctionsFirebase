@@ -142,35 +142,40 @@
                                         </button>
                                     </form>
                                     {{#each product}}
-                                    
+
 
                                     <tbody id="listproducts">
 
                                         <td>{{nombre}}</td>
                                         <td>{{precio}}</td>
                                         <td>{{categoria}}</td>
-                                        <td name="id" class="d-none"{{id}}</td>
+                                        <td name="id" class="d-none" {{id}}></td>
 
                                         <form action="/deleteProduct/{{id}}" method="get">
                                             <td>
-                                                <button type="submit" class="btn btn-primary openBtn"
-                                                    data-toggle="modal" class="btn btn-danger">
+                                                <button type="submit" class="btn btn-danger openBtn" data-toggle="modal"
+                                                    class="btn btn-danger">
                                                     Eliminar
                                                 </button>
                                             </td>
-
+                                        </form>
+                                        <form action="/productId/{{id}}" method="get">
                                             <td>
 
-                                                <button type="button" value="{{id}}" data-target="#edit" class="btn btn-danger" data-toggle="modal"> Editar
+                                                <button type="submit"  data-target="#edit" class="btn btn-danger" data-toggle="modal"> 
+                                                    Editar
                                                 </button>
 
                                             </td>
+                                            {{>modal}}
                                         </form>
                                     </tbody>
+
                                     {{/each}}
 
                                 </table>
-                               
+
+
 
                             </div>
 
