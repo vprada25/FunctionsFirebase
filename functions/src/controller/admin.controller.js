@@ -14,7 +14,6 @@ controller.about = (req, res) => {
 
 
 controller.login = (req, res) => {
-    console.log('--------holaaaa-----');
     firebase.auth().signOut()
         .then(() => {
             console.log("Sesion cerrada exitosamente");
