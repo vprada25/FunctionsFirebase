@@ -29,12 +29,12 @@
 
                                 </a>
                                 <form action="/Logout" method="get">
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item"  href="#"><button class="btn btn-outline-secondary" type="submit"
-                                                                id="inputGroupFileAddon04">Cerrar Sesion
-                                                            </button></a>
-                                </div>
+                                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                        <div class="dropdown-divider"></div>
+                                        <a class="dropdown-item" href="#"><button class="btn btn-outline-secondary"
+                                                type="submit" id="inputGroupFileAddon04">Cerrar Sesion
+                                            </button></a>
+                                    </div>
                                 </form>
                             </li>
                         </ul>
@@ -154,7 +154,7 @@
                                         <td>{{categoria}}</td>
                                         <td name="id" class="d-none" {{id}}></td>
 
-                                       
+                                        <form action="/deleteProduct/{{id}}" method="get">
                                             <td>
                                                 <button type="submit" class="btn btn-danger openBtn" data-toggle="modal"
                                                     class="btn btn-danger">
@@ -162,21 +162,22 @@
                                                 </button>
                                             </td>
                                         </form>
-                                        <form action="/productId/{{id}}" method="get">
-                                            <td>
 
-                                                <button type="submit"  data-target="#edit" class="btn btn-danger" data-toggle="modal"> 
-                                                    Editar
-                                                </button>
+                                        <td>
+                                            <button type="submit" data-target="#edit" class="btn btn-primary openBtn"
+                                                data-toggle="modal" class="btn btn-danger">
+                                                Editar
+                                            </button>
+                                        </td>
 
-                                            </td>
-                                            {{>modal}}
-                                        </form>
+
+                                        {{>modal}}
                                     </tbody>
 
                                     {{/each}}
 
                                 </table>
+
 
 
 
