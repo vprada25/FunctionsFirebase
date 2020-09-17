@@ -219,12 +219,14 @@
 
 
                                         </td>
-                                        <td>
-                                            <button type="button" class="btn btn-danger" data-toggle="modal"
-                                                data-target="#eliminar">
-                                                Eliminar
-                                            </button>
-                                        </td>
+                                        <form action="/deleteUser/{{id}}" method="get">
+                                            <td>
+                                                <button type="submit" class="btn btn-danger openBtn" data-toggle="modal"
+                                                    class="btn btn-danger">
+                                                    Eliminar
+                                                </button>
+                                            </td>
+                                        </form>
                                     </tbody>
                                     {{/each}}
                                 </table>

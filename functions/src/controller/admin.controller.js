@@ -74,10 +74,27 @@ const getUser = async () => {
         db.collection("usuario").get()
             .then((snapshot) => {
                 snapshot.forEach((doc) => {
-                    listUser.push(doc.data())
+                    let id = doc.id;
+                    let primernombre = doc.data().primernombre;
+                    let segundonombre = doc.data().segundonombre;
+                    let primerapellido = doc.data().primerapellido;
+                    let segundoapellido = doc.data().segundoapellido;
+                    let usuario = doc.data().usuario;
+                    let contrasena = doc.data().contrasena;
+                    user = {
+                        id : id,
+                        primernombre : primernombre,
+                        segundonombre : segundonombre,
+                        primerapellido : primerapellido,
+                        segundoapellido : segundoapellido,
+                        usuario : usuario,
+                        contrasena : contrasena
+                    }
+
+                    listUser.push(user)
 
                 });
-
+                console.log(listUser)
                 resolve(listUser);
                 // console.log(listUser);
 
