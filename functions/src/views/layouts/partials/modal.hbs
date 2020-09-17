@@ -1,3 +1,4 @@
+{{product}}
 
 <div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="editarLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
@@ -5,56 +6,56 @@
       <div class="modal-header">
         <h5 class="modal-title" id="editLabel">Actualizar
           Datos</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
+      <form id="addproducts" action="/productId/{{id}}" method="get">
+        <button type="submit" class="btn btn-secondary">Obtener Datos</button>
 
-        <form id="addproducts">
-          <div class="form-row">
-            <div class="col-md-12 mb-3">
-              <label for="nombreproducto">Nombre Producto</label>
-              <input name="nombreproducto" type="text" class="form-control" value="" required>
-            </div>
-            <div class="col-md-12 mb-3">
-              <label for="precioproducto">Precio</label>
-              <input name="precioproducto" type="number" class="form-control" value="" required>
-            </div>
+        </div>
+        <div class="modal-body">
+
+
+        <div class="form-row">
+          <div class="col-md-12 mb-3">
+            <label for="nombreproducto">Nombre Producto</label>
+            <input name="nombreproducto" type="text" class="form-control" value="">
           </div>
-          <div class="form-row">
+          <div class="col-md-12 mb-3">
+            <label for="precioproducto">Precio</label>
+            <input name="precioproducto" type="number" class="form-control" value="">
+          </div>
+        </div>
+        <div class="form-row">
 
-            <div class="col-md-12 mb-3">
-              <label for="categoriaproducto">Categoria</label>
-              <select class="custom-select" name="categoriaproducto" required>
-                <option selected disabled value=""></option>
-                <option>COMEDORES</option>
-                <option>SALAS</option>
-                <option>ALCOBAS</option>
-                <option>OFICINA</option>
-                <option>DECORACION</option>
-                <option>SILLAS</option>
-                <option>OTRO</option>
-              </select>
-            </div>
-            <div class="col-md-12 mb-3">
-              <div class="form-group">
-                <label for="photoproduct1">Foto Producto</label>
-                <div class="input-group">
-                  <div class="custom-file">
-                    <input type="file" class="custom-file-input" id="archivo1" name="archivo1"
-                      aria-describedby="inputGroupFileAddon0">
-                    <label class="custom-file-label" for="inputGroupFile04">Elegir imagen</label>
-                  </div>
-                  <div class="input-group-append">
-                    <button class="btn btn-outline-secondary" type="button" id="inputGroupFileAddon0">subir
-                      Imagen</button>
-                  </div>
+          <div class="col-md-12 mb-3">
+            <label for="categoriaproducto">Categoria</label>
+            <select class="custom-select" name="categoriaproducto">
+              <option selected disabled value=""></option>
+              <option>COMEDORES</option>
+              <option>SALAS</option>
+              <option>ALCOBAS</option>
+              <option>OFICINA</option>
+              <option>DECORACION</option>
+              <option>SILLAS</option>
+              <option>OTRO</option>
+            </select>
+          </div>
+          <div class="col-md-12 mb-3">
+            <div class="form-group">
+              <label for="photoproduct1">Foto Producto</label>
+              <div class="input-group">
+                <div class="custom-file">
+                  <input type="file" class="custom-file-input" id="archivo1" name="archivo1"
+                    aria-describedby="inputGroupFileAddon0">
+                  <label class="custom-file-label" for="inputGroupFile04">Elegir imagen</label>
+                </div>
+                <div class="input-group-append">
+                  <button class="btn btn-outline-secondary" type="button" id="inputGroupFileAddon0">subir
+                    Imagen</button>
                 </div>
               </div>
             </div>
           </div>
-        </form>
+        </div>
+      </form>
 
       </div>
       <div class="modal-footer">
