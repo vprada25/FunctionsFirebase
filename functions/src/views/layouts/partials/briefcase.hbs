@@ -1,5 +1,8 @@
 <link rel="stylesheet" href="/css/briefcase.css">
 
+
+
+
 <div class="briefcase">
     <div class="container-fluid  header-top d-none d-md-block"></div>
     <div class="container">
@@ -72,27 +75,25 @@
         <div class="container mt-5">
 
             <div class="row" id="getdiningroom">
+                {{#each product}}
                 <div class="col-md-3">
-
+                    {{#if categoria}}
                     <div class="card">
                         <img src="" alt="card-1" class="card-img-top">
-                        {{#each comedor}}
+
                         <div class="card-body">
                             <h5>{{nombre}}</h5>
-                            <h6>{{precio}} </h6>
+                            <h6> {{precio}}</h6>
                             <button class="btn btn-danger"><i class="fa fa-cart-plus" aria-hidden="true"></i>
                                 Comprar</button>
 
                         </div>
-                        {{/each}}
+
                     </div>
-
+                    {{/if}}
                 </div>
+                {{/each}}
             </div>
-
-
-
-
         </div>
 
 
@@ -177,7 +178,8 @@
                             <div class="media-body mt-2">
                                 <h5>${doc.data().name}</h5>
                                 <h6>$ ${doc.data().price}</h6>
-                                <button class="btn btn-success"><i class="fa fa-cart-plus" aria-hidden="true"></i> Add
+                                <button class="btn btn-success"><i class="fa fa-cart-plus" aria-hidden="true"></i>
+                                    Add
                                     To Cart</button>
                             </div>
 
@@ -199,7 +201,8 @@
                             <div class="media-body mt-2">
                                 <h5>${doc.data().name}</h5>
                                 <h6>$ ${doc.data().price}</h6>
-                                <button class="btn btn-success"><i class="fa fa-cart-plus" aria-hidden="true"></i> Add
+                                <button class="btn btn-success"><i class="fa fa-cart-plus" aria-hidden="true"></i>
+                                    Add
                                     To Cart</button>
                             </div>
                         </div>
@@ -221,7 +224,8 @@
                             <div class="media-body mt-2">
                                 <h5>${doc.data().name}</h5>
                                 <h6>$ ${doc.data().price}</h6>
-                                <button class="btn btn-success"><i class="fa fa-cart-plus" aria-hidden="true"></i> Add
+                                <button class="btn btn-success"><i class="fa fa-cart-plus" aria-hidden="true"></i>
+                                    Add
                                     To Cart</button>
                             </div>
 
@@ -256,7 +260,8 @@
                             <div class="card-body">
                                 <h4>OTRO</h4>
                                 <h6>$67.87</h6>
-                                <button class="btn btn-danger"><i class="fa fa-cart-plus" aria-hidden="true"></i> Add To
+                                <button class="btn btn-danger"><i class="fa fa-cart-plus" aria-hidden="true"></i>
+                                    Add To
                                     Cart</button>
                             </div>
                         </div>
@@ -268,7 +273,8 @@
                             <div class="card-body">
                                 <h4>OTRO</h4>
                                 <h6>$67.87</h6>
-                                <button class="btn btn-danger"><i class="fa fa-cart-plus" aria-hidden="true"></i> Add To
+                                <button class="btn btn-danger"><i class="fa fa-cart-plus" aria-hidden="true"></i>
+                                    Add To
                                     Cart</button>
                             </div>
                         </div>
@@ -280,7 +286,8 @@
                             <div class="card-body">
                                 <h4>OTRO</h4>
                                 <h6>$67.87</h6>
-                                <button class="btn btn-danger"><i class="fa fa-cart-plus" aria-hidden="true"></i> Add To
+                                <button class="btn btn-danger"><i class="fa fa-cart-plus" aria-hidden="true"></i>
+                                    Add To
                                     Cart</button>
                             </div>
                         </div>
@@ -292,7 +299,8 @@
                             <div class="card-body">
                                 <h4>OTRO</h4>
                                 <h6>$67.87</h6>
-                                <button class="btn btn-danger"><i class="fa fa-cart-plus" aria-hidden="true"></i> Add To
+                                <button class="btn btn-danger"><i class="fa fa-cart-plus" aria-hidden="true"></i>
+                                    Add To
                                     Cart</button>
                             </div>
                         </div>

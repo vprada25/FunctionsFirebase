@@ -4,8 +4,8 @@ const controller = {};
 
 const db = firebase.firestore();
 
-controller.home = (req, res) => {
-    res.render('../views/index.hbs', {comedor : getComedores()})
+controller.home = async (req, res) => {
+    res.render('../views/index.hbs', { product: await getProduct() })
 }
 
 controller.about = (req, res) => {
@@ -119,7 +119,8 @@ const getProduct = async () => {
                     }
                     listProduct.push(producto);
                 });
-                 resolve(listProduct);
+                console.log(listProduct)
+                resolve(listProduct);
                 // console.log(listUser);
             })
             .catch(function (error) {
@@ -186,12 +187,6 @@ controller.act = (req, res) => {
 
 
 }
-
-
-
-
-
-
 
 controller.saveUser = (req, res) => {
     console.log(req.body);
