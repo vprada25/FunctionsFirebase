@@ -29,7 +29,7 @@ controller.auth=(req, res)=>{
   firebase.auth().signInWithEmailAndPassword(email, contrasena)
   .then((user) => {
     console.log('Sesion Inciada');
-    res.render('./layouts/admin/admin.hbs');
+    res.render('./layouts/admin/admin.hbs',{email});
    
 
        }).catch(function (error) {

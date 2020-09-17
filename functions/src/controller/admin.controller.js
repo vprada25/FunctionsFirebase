@@ -23,7 +23,7 @@ controller.admin = async (req, res) => {
     firebase.auth().onAuthStateChanged(function (user) {
         if (user) {
             res.render('./layouts/admin/admin.hbs');
-            emailUsuarioLogueado = user.email;
+           
         }
 
         else {
