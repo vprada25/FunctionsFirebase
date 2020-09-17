@@ -9,11 +9,14 @@ const auth = require('../controller/auth.controller');
 
 
 //views
+
 router.get('/', controller.home);
 router.get('/about', controller.about)
 router.get('/login', controller.login)
 router.get('/register', controller.register)
 router.get('/admin', controller.admin )
+
+
 
 
 //services

@@ -18,7 +18,18 @@ controller.register = (req, res) => {
 }
 
 controller.admin = async (req, res) => {
-    res.render('./layouts/admin/admin.hbs');
+    
+
+    firebase.auth().onAuthStateChanged(function (user) {
+        if (user) {
+            res.render('./layouts/admin/admin.hbs');
+            emailUsuarioLogueado = user.email;
+        }
+
+        else {
+            res.render('./layouts/login/login.hbs');
+        }
+    });
 
 
 }
@@ -197,15 +208,8 @@ var emailUsuarioLogueado = "hola";
 
 controller.ControlLogin = (res, req) => {
 
-    firebase.auth().onAuthStateChanged(function (user) {
-        if (user) {
-            emailUsuarioLogueado = user.email;
-        }
-
-        else {
-            res.render('./layouts/login/login.hbs');
-        }
-    });
+console.log('----------------hola-----------------')
+   
 }
 
 
