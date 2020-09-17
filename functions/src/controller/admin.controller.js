@@ -36,6 +36,10 @@ controller.getUser = async (req, res) => {
 
 }
 
+/*controller.deleteProduct = async (req, res) => {
+    res.render(await deleteProduct())
+}*/
+
 
 const getUser = async () => {
     return new Promise(resolve => {
@@ -57,6 +61,18 @@ const getUser = async () => {
 
     })
 }
+
+/*const deleteProduct = async (req,res) => {
+    return new Promise(resolve => {
+        console.log(req.params.id);
+        db.collection("producto").doc(req.params.id).delete()
+            .then(() => {
+                resolve(res.render('./layouts/admin/admin.hbs'));
+            }).catch((error) => {
+                console.error("Error: ", error);
+            });
+    })
+}*/
 
 const getProduct = async () => {
     return new Promise(resolve => {
@@ -97,20 +113,21 @@ const getProduct = async () => {
 
 
 
-controller.act = (req,res) =>{
+
+controller.act = (req, res) => {
     console.log(req.params.id);
 
     db.collection("producto").doc(req.params.id).update({
         name: nameproduct1.value,
         price: priceproduct1.value,
         category: categoryproduct1.value,
-      })
+    })
         .then(() => {
-          console.log("Document successfully updated!");
-          res.render('/admin');
+            console.log("Document successfully updated!");
+            res.render('/admin');
         })
         .catch((error) => {
-          console.log("Error: ", error);
+            console.log("Error: ", error);
         });
 
 
