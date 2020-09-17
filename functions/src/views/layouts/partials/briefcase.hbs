@@ -70,17 +70,23 @@
 
 
         <div class="container mt-5">
+
             <div class="row" id="getdiningroom">
                 <div class="col-md-3">
+
                     <div class="card">
                         <img src="" alt="card-1" class="card-img-top">
+                        {{#each comedor}}
                         <div class="card-body">
-                            <h5></h5>
-                            <h6>$ </h6>
+                            <h5>{{nombre}}</h5>
+                            <h6>{{precio}} </h6>
                             <button class="btn btn-danger"><i class="fa fa-cart-plus" aria-hidden="true"></i>
                                 Comprar</button>
+
                         </div>
+                        {{/each}}
                     </div>
+
                 </div>
             </div>
 

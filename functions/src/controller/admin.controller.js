@@ -5,38 +5,38 @@ const controller = {};
 const db = firebase.firestore();
 
 controller.home = (req, res) => {
-    res.render('index.hbs')
+    res.render('../views/index.hbs', {comedor : getComedores()})
 }
+
 controller.about = (req, res) => {
     res.render('./layouts/about-us/about.hbs')
 }
+
+
 controller.login = (req, res) => {
     console.log('--------holaaaa-----');
     firebase.auth().signOut()
-    .then(() => {
-      console.log("Sesion cerrada exitosamente");
-      res.render('./layouts/login/login.hbs')
+        .then(() => {
+            console.log("Sesion cerrada exitosamente");
+            res.render('./layouts/login/login.hbs')
 
-    }).catch((error) => {
-      console.log(error.message)
-    });
-  
-
-
-
+        }).catch((error) => {
+            console.log(error.message)
+        });
 
 }
+
 controller.register = (req, res) => {
     res.render('./layouts/register/register.hbs')
 }
 
 controller.admin = async (req, res) => {
-    
+
 
     firebase.auth().onAuthStateChanged(function (user) {
         if (user) {
             res.render('./layouts/admin/admin.hbs');
-           
+
         }
 
         else {
@@ -58,6 +58,10 @@ controller.getUser = async (req, res) => {
         { user: await getUser() });
 
 
+}
+
+/*controller.comedores = async (req, res) => {
+    res.render('index.hbs', { comedor: await getComedores() })
 }
 
 /*controller.deleteProduct = async (req, res) => {
@@ -108,23 +112,50 @@ const getProduct = async () => {
                     let nombre = doc.data().nombre;
                     let precio = doc.data().precio;
                     let categoria = doc.data().categoria;
-
-
-
                     producto = {
                         id: id,
                         nombre: nombre,
                         precio: precio,
                         categoria: categoria
                     }
-
-
                     listProduct.push(producto);
+                });
+                 resolve(listProduct);
+                // console.log(listUser);
+            })
+            .catch(function (error) {
+                console.log("error :", error);
+            });
+
+    })
+}
+
+const getComedores = async () => {
+    return new Promise(resolve => {
+        let listComedores = [];
+        db.collection("producto").where("categoria", "==", "COMEDORES").get()
+            .then(function (querySnapshot) {
+                querySnapshot.forEach(function (doc) {
+                    let id = doc.id;
+                    let nombre = doc.data().nombre;
+                    let precio = doc.data().precio;
+                    let categoria = doc.data().categoria;
+
+                    comedor = {
+                        id: id,
+                        nombre: nombre,
+                        precio: precio,
+                        categoria: categoria
+                    }
+
+                    console.log(comedor);
+
+                    listComedores.push(comedor);
 
 
                 });
 
-                resolve(listProduct);
+                resolve(listComedores)
                 // console.log(listUser);
 
             })
@@ -237,9 +268,9 @@ controller.listUsers = (req, res) => {
 var emailUsuarioLogueado = "hola";
 
 controller.ControlLogin = (res, req) => {
-    
 
-   
+
+
 }
 
 
