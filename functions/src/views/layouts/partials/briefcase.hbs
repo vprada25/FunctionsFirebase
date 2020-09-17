@@ -111,17 +111,24 @@
 
         <div class="container mt-5 pb-5">
             <div class="row" id="getroom">
+                {{#each product}}
                 <div class="col-md-3">
+                    {{#if categoria }}
                     <div class="card">
-                        <img src="${doc.data().linkImagen}" alt="card-1" class="card-img-top">
+                        <img src="" alt="card-1" class="card-img-top">
+
                         <div class="card-body">
-                            <h5>${doc.data().name}</h5>
-                            <h6>$ ${doc.data().price}</h6>
+                            <h5>{{nombre}}</h5>
+                            <h6> {{precio}}</h6>
                             <button class="btn btn-danger"><i class="fa fa-cart-plus" aria-hidden="true"></i>
                                 Comprar</button>
+
                         </div>
+
                     </div>
+                    {{/if}}
                 </div>
+                {{/each}}
 
 
 
