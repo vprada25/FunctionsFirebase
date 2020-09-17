@@ -14,7 +14,7 @@ router.get('/', controller.home);
 router.get('/about', controller.about)
 router.get('/login', controller.login)
 router.get('/register', controller.register)
-router.get('/admin', controller.admin )
+router.get('/admin', controller.admin)
 
 
 
@@ -30,16 +30,15 @@ router.get('/admin/getUsers', controller.getUser)
 
 
 
-router.get('/deleteProduct/:id',(req, res) => {
-    
+router.get('/deleteProduct/:id', (req, res) => {
 
     console.log(req.params.id);
     db.collection("producto").doc(req.params.id).delete()
-    .then(() => {
-        res.render('./layouts/admin/admin.hbs');
-    }).catch((error) => {
-      console.error("Error: ", error);
-    });
+        .then(() => {
+            res.render('./layouts/admin/admin.hbs');
+        }).catch((error) => {
+            console.error("Error: ", error);
+        });
 });
 
 
@@ -47,7 +46,7 @@ router.get('/deleteProduct/:id',(req, res) => {
 //services
 router.post('/register', controller.saveUser)
 router.post('/admin', auth.auth);
-router.post('/login',controller.ControlLogin);
+router.post('/login', controller.ControlLogin);
 
 
 module.exports = router;
