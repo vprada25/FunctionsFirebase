@@ -40,6 +40,17 @@ router.get('/deleteProduct/:id', (req, res) => {
         });
 });
 
+router.get('/deleteUser/:id', (req, res) => {
+
+    console.log(req.params.id);
+    db.collection("usuario").doc(req.params.id).delete()
+        .then(() => {
+            res.render('./layouts/admin/admin.hbs');
+        }).catch((error) => {
+            console.error("Error: ", error);
+        });
+});
+
 
 
 
