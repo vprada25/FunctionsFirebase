@@ -30,39 +30,34 @@ controller.register = (req, res) => {
 }
 
 controller.admin = async (req, res) => {
-
-
     firebase.auth().onAuthStateChanged(function (user) {
         if (user) {
             res.render('./layouts/admin/admin.hbs');
-
         }
-
         else {
             res.render('./layouts/login/login.hbs');
         }
     });
-
-
 }
 
 controller.getProduct = async (req, res) => {
     res.render('./layouts/admin/admin.hbs',
         { product: await getProduct() });
-
-
 }
+
 controller.getUser = async (req, res) => {
     res.render('./layouts/admin/admin.hbs',
         { user: await getUser() });
-
-
 }
 
-/*controller.getProductId = async(req,res) =>{
-    res.render('./layouts/admin/admin.hbs',{productId: await getProductId()})
+controller.getComedor = async (req, res) => {
+    res.render('../views/index.hbs', { comedor: await getComedores() })
 }
-*/
+
+controller.getProductId = async(req,res) =>{
+    res.render('./layouts/admin/admin.hbs',{productoID: await getProductId()})
+}
+
 /*controller.comedores = async (req, res) => {
     res.render('index.hbs', { comedor: await getComedores() })
 }
@@ -86,13 +81,13 @@ const getUser = async () => {
                     let usuario = doc.data().usuario;
                     let contrasena = doc.data().contrasena;
                     user = {
-                        id : id,
-                        primernombre : primernombre,
-                        segundonombre : segundonombre,
-                        primerapellido : primerapellido,
-                        segundoapellido : segundoapellido,
-                        usuario : usuario,
-                        contrasena : contrasena
+                        id: id,
+                        primernombre: primernombre,
+                        segundonombre: segundonombre,
+                        primerapellido: primerapellido,
+                        segundoapellido: segundoapellido,
+                        usuario: usuario,
+                        contrasena: contrasena
                     }
 
                     listUser.push(user)
@@ -109,7 +104,7 @@ const getUser = async () => {
 
     })
 }
-/*
+
 const getProductId = async (req, res) => {
     return new Promise(resolve => {
         let listProductId = [];
@@ -140,7 +135,7 @@ const getProductId = async (req, res) => {
 
     })
 }
-*/
+
 /*const deleteProduct = async (req,res) => {
     return new Promise(resolve => {
         console.log(req.params.id);
@@ -193,24 +188,17 @@ const getComedores = async () => {
                     let nombre = doc.data().nombre;
                     let precio = doc.data().precio;
                     let categoria = doc.data().categoria;
-
                     comedor = {
                         id: id,
                         nombre: nombre,
                         precio: precio,
                         categoria: categoria
                     }
-
                     console.log(comedor);
-
                     listComedores.push(comedor);
-
-
                 });
-
                 resolve(listComedores)
                 // console.log(listUser);
-
             })
             .catch(function (error) {
                 console.log("error :", error);
@@ -254,7 +242,6 @@ controller.saveUser = (req, res) => {
                 primerapellido: req.body.primerapellido,
                 segundoapellido: req.body.segundoapellido,
                 emailUser: req.body.emailUser
-
             })
                 .then((docRef) => {
                     console.log("Document written with ID: ", docRef.id);
@@ -273,27 +260,18 @@ controller.saveUser = (req, res) => {
 }
 controller.saveProduct = (req, res) => {
     console.log(req.body);
-
-
     db.collection("producto").add({
-
         nombre: req.body.nameproduct,
         precio: req.body.priceproduct,
         categoria: req.body.categoryproduct,
-
-
     })
         .then((docRef) => {
-
             console.log("Document written with ID: ", docRef.id);
             res.render('./layouts/admin/admin.hbs')
         })
         .catch((error) => {
             console.error("Error: ", error);
         });
-
-
-
 }
 
 controller.listUsers = (req, res) => {

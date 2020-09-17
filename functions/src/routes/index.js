@@ -10,14 +10,13 @@ const auth = require('../controller/auth.controller');
 
 
 //views
-router.get('/', controller.home);
+router.get('/', [controller.home, controller.getProductId]);
+
+
 router.get('/about', controller.about)
 router.get('/login', controller.login)
 router.get('/register', controller.register)
 router.get('/admin', controller.admin)
-
-
-
 
 //services
 router.post('/register', controller.saveUser)
