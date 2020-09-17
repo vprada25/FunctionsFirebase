@@ -97,6 +97,27 @@ const getProduct = async () => {
 
 
 
+controller.act = (req,res) =>{
+    console.log(req.params.id);
+
+    db.collection("producto").doc(req.params.id).update({
+        name: nameproduct1.value,
+        price: priceproduct1.value,
+        category: categoryproduct1.value,
+      })
+        .then(() => {
+          console.log("Document successfully updated!");
+          res.render('/admin');
+        })
+        .catch((error) => {
+          console.log("Error: ", error);
+        });
+
+
+}
+
+
+
 
 
 
