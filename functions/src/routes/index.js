@@ -62,7 +62,6 @@ router.get('/productId/:id', (req, res) => {
 //services
 router.post('/register', controller.saveUser)
 router.post('/admin', auth.auth);
-router.post('/login', controller.ControlLogin);
 
 
 module.exports = router;
