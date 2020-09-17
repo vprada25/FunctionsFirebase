@@ -147,6 +147,7 @@ const getProduct = async () => {
     })
 }
 
+
 const getComedores = async () => {
     return new Promise(resolve => {
         let listComedores = [];

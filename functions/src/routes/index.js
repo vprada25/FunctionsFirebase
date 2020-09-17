@@ -8,6 +8,7 @@ const auth = require('../controller/auth.controller');
 
 
 
+
 //views
 router.get('/', controller.home);
 router.get('/about', controller.about)
