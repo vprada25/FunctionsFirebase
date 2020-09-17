@@ -11,7 +11,20 @@ controller.about = (req, res) => {
     res.render('./layouts/about-us/about.hbs')
 }
 controller.login = (req, res) => {
-    res.render('./layouts/login/login.hbs')
+    console.log('--------holaaaa-----');
+    firebase.auth().signOut()
+    .then(() => {
+      console.log("Sesion cerrada exitosamente");
+      res.render('./layouts/login/login.hbs')
+
+    }).catch((error) => {
+      console.log(error.message)
+    });
+  
+
+
+
+
 }
 controller.register = (req, res) => {
     res.render('./layouts/register/register.hbs')
@@ -224,16 +237,7 @@ controller.listUsers = (req, res) => {
 var emailUsuarioLogueado = "hola";
 
 controller.ControlLogin = (res, req) => {
-    console.log('--------holaaaa-----');
-    firebase.auth().signOut()
-    .then(() => {
-      console.log("Sesion cerrada exitosamente");
-      res.render('./layouts/admin/admin.hbs');
-
-    }).catch((error) => {
-      console.log(error.message)
-    });
-  
+    
 
    
 }
