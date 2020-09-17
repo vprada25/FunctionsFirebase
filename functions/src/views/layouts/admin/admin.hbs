@@ -135,34 +135,34 @@
                                         </tr>
                                     </thead>
 
-                                    <input class="d-none" type="text" id="id">
+
                                     <form action="/admin/getProduct" method="get">
                                         <button class="btn btn-primary openBtn" data-toggle="modal" type="submit">
                                             ver productos
                                         </button>
                                     </form>
                                     {{#each product}}
-
+                                    
 
                                     <tbody id="listproducts">
 
                                         <td>{{nombre}}</td>
                                         <td>{{precio}}</td>
                                         <td>{{categoria}}</td>
-                                        <td>{{id}}</td>
+                                        <td name="id" class="d-none"{{id}}</td>
 
                                         <form action="/deleteProduct/{{id}}" method="get">
-                                        <td>
-                                            <button type="submit" class="btn btn-primary openBtn" data-toggle="modal"
-                                                class="btn btn-danger">
-                                                Eliminar
-                                            </button>
-                                        </td>
+                                            <td>
+                                                <button type="submit" class="btn btn-primary openBtn"
+                                                    data-toggle="modal" class="btn btn-danger">
+                                                    Eliminar
+                                                </button>
+                                            </td>
 
-                                        <td>
-                                            <button type="button" class="btn btn-danger" data-toggle="modal"> Editar
-                                            </button>
-                                        </td>
+                                            <td>
+                                                <button type="button" class="btn btn-danger" data-toggle="modal"> Editar
+                                                </button>
+                                            </td>
                                         </form>
                                     </tbody>
                                     {{/each}}
