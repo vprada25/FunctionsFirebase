@@ -14,7 +14,6 @@ router.get('/about', controller.about)
 router.get('/login', controller.login)
 router.get('/register', controller.register)
 router.get('/admin', controller.admin)
-router.get('/Logout', controller.ControlLogin)
 
 
 
