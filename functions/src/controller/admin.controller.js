@@ -59,6 +59,10 @@ controller.getUser = async (req, res) => {
 
 }
 
+/*controller.getProductId = async(req,res) =>{
+    res.render('./layouts/admin/admin.hbs',{productId: await getProductId()})
+}
+*/
 /*controller.comedores = async (req, res) => {
     res.render('index.hbs', { comedor: await getComedores() })
 }
@@ -105,7 +109,38 @@ const getUser = async () => {
 
     })
 }
+/*
+const getProductId = async (req, res) => {
+    return new Promise(resolve => {
+        let listProductId = [];
+        db.collection("usuario").doc(req.params.id).get()
+            .then((snapshot) => {
+                snapshot.forEach((doc) => {
+                    let id = doc.id;
+                    let nombre = doc.data().nombre;
+                    let precio = doc.data().precio;
+                    let categoria = doc.data().categoria;
+                    producto = {
+                        id: id,
+                        nombre: nombre,
+                        precio: precio,
+                        categoria: categoria
+                    }
+                    listProductId.push(producto);
 
+                });
+                console.log(listProductId)
+                resolve(listProductId);
+                // console.log(listUser);
+
+            })
+            .catch(function (error) {
+                console.log("error :", error);
+            });
+
+    })
+}
+*/
 /*const deleteProduct = async (req,res) => {
     return new Promise(resolve => {
         console.log(req.params.id);

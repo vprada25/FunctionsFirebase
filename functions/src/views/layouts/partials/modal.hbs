@@ -1,67 +1,69 @@
 {{product}}
-
-<div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="editarLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="editLabel">Actualizar
-          Datos</h5>
-      <form id="addproducts" action="/productId/{{id}}" method="get">
-        <button type="submit" class="btn btn-secondary">Obtener Datos</button>
+<form action="" method="get">
+  <div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="editarLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="editLabel">Actualizar
+            Datos</h5>
+          <form id="addproducts" action="/productId/{{id}}" method="get">
+            <button type="submit" class="btn btn-secondary">Obtener Datos</button>
 
         </div>
         <div class="modal-body">
 
 
-        <div class="form-row">
-          <div class="col-md-12 mb-3">
-            <label for="nombreproducto">Nombre Producto</label>
-            <input name="nombreproducto" type="text" class="form-control" value="">
+          <div class="form-row">
+            <div class="col-md-12 mb-3">
+              <label for="nombreproducto">Nombre Producto</label>
+              <input name="nombreproducto" type="text" class="form-control" value="">
+            </div>
+            <div class="col-md-12 mb-3">
+              <label for="precioproducto">Precio</label>
+              <input name="precioproducto" type="number" class="form-control" value="">
+            </div>
           </div>
-          <div class="col-md-12 mb-3">
-            <label for="precioproducto">Precio</label>
-            <input name="precioproducto" type="number" class="form-control" value="">
-          </div>
-        </div>
-        <div class="form-row">
+          <div class="form-row">
 
-          <div class="col-md-12 mb-3">
-            <label for="categoriaproducto">Categoria</label>
-            <select class="custom-select" name="categoriaproducto">
-              <option selected disabled value=""></option>
-              <option>COMEDORES</option>
-              <option>SALAS</option>
-              <option>ALCOBAS</option>
-              <option>OFICINA</option>
-              <option>DECORACION</option>
-              <option>SILLAS</option>
-              <option>OTRO</option>
-            </select>
-          </div>
-          <div class="col-md-12 mb-3">
-            <div class="form-group">
-              <label for="photoproduct1">Foto Producto</label>
-              <div class="input-group">
-                <div class="custom-file">
-                  <input type="file" class="custom-file-input" id="archivo1" name="archivo1"
-                    aria-describedby="inputGroupFileAddon0">
-                  <label class="custom-file-label" for="inputGroupFile04">Elegir imagen</label>
-                </div>
-                <div class="input-group-append">
-                  <button class="btn btn-outline-secondary" type="button" id="inputGroupFileAddon0">subir
-                    Imagen</button>
+            <div class="col-md-12 mb-3">
+              <label for="categoriaproducto">Categoria</label>
+              <select class="custom-select" name="categoriaproducto">
+                <option selected disabled value=""></option>
+                <option>COMEDORES</option>
+                <option>SALAS</option>
+                <option>ALCOBAS</option>
+                <option>OFICINA</option>
+                <option>DECORACION</option>
+                <option>SILLAS</option>
+                <option>OTRO</option>
+              </select>
+            </div>
+            <div class="col-md-12 mb-3">
+              <div class="form-group">
+                <label for="photoproduct1">Foto Producto</label>
+                <div class="input-group">
+                  <div class="custom-file">
+                    <input type="file" class="custom-file-input" id="archivo1" name="archivo1"
+                      aria-describedby="inputGroupFileAddon0">
+                    <label class="custom-file-label" for="inputGroupFile04">Elegir imagen</label>
+                  </div>
+                  <div class="input-group-append">
+                    <button class="btn btn-outline-secondary" type="button" id="inputGroupFileAddon0">subir
+                      Imagen</button>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-      </form>
 
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-        <button type="button" class="btn btn-primary" data-dismiss="modal">confirmar</button>
+
+
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+            <button type="button" class="btn btn-primary" data-dismiss="modal">confirmar</button>
+          </div>
+        </div>
       </div>
     </div>
   </div>
-</div>
+</form>

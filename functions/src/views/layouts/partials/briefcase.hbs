@@ -79,7 +79,7 @@
                 <div class="col-md-3">
                     {{#if categoria}}
                     <div class="card">
-                        <img src="" alt="card-1" class="card-img-top">
+                        <img src="/img/comedor.png" alt="card-1" class="card-img-top">
 
                         <div class="card-body">
                             <h5>{{nombre}}</h5>
@@ -115,7 +115,7 @@
                 <div class="col-md-3">
                     {{#if categoria}}
                     <div class="card">
-                        <img src="" alt="card-1" class="card-img-top">
+                        <img src="/img/sala.png" alt="card-1" class="card-img-top">
 
                         <div class="card-body">
                             <h5>{{nombre}}</h5>
@@ -150,20 +150,20 @@
 
         <div class="container mt-5 pb-5">
             <div class="row" id="bedroom">
-
+                {{#each product}}
 
                 <div class="col-md-3">
                     <div class="card">
-                        <img src="${doc.data().linkImagen}" alt="card-1" class="card-img-top">
+                        <img src="/img/alcoba.png" alt="card-1" class="card-img-top">
                         <div class="card-body">
-                            <h5>${doc.data().name}</h5>
-                            <h6>$ ${doc.data().price}</h6>
+                            <h5>{{nombre}}</h5>
+                            <h6>$ {{precio}}</h6>
                             <button class="btn btn-danger"><i class="fa fa-cart-plus" aria-hidden="true"></i> Add To
                                 Cart</button>
                         </div>
                     </div>
                 </div>
-
+                {{/each}}
             </div>
 
 
@@ -173,26 +173,29 @@
         <div class="container-fluid pt-5 pb-5">
             <div class="container">
                 <div class="row">
+
                     <div class="col-md-4">
+
                         <div class="row">
                             <h4>OFICINA</h4>
                         </div>
                         <div class="row">
                             <div class="underline-green"></div>
                         </div>
+
+                        {{#each product}}
                         <div id="office">
-                            <img src="${doc.data().linkImagen}" class="img-fluid mr-3 w-50" alt="media1">
+                            <img src="/img/oficina.png" class="img-fluid mr-3 w-50 mt-5" alt="media1">
                             <div class="media-body mt-2">
-                                <h5>${doc.data().name}</h5>
-                                <h6>$ ${doc.data().price}</h6>
+                                <h5>{{nombre}}</h5>
+                                <h6>$ {{precio}}</h6>
                                 <button class="btn btn-success"><i class="fa fa-cart-plus" aria-hidden="true"></i>
                                     Add
                                     To Cart</button>
                             </div>
 
-
-
                         </div>
+                        {{/each}}
 
                     </div>
 
@@ -203,16 +206,18 @@
                         <div class="row">
                             <div class="underline-blue"></div>
                         </div>
+                        {{#each product}}
                         <div id="decoration">
-                            <img src="${doc.data().linkImagen}" class="img-fluid mr-3 w-50" alt="media1">
+                            <img src="/img/decoración.png" class="img-fluid mr-3 w-50 mt-5" alt="media1">
                             <div class="media-body mt-2">
-                                <h5>${doc.data().name}</h5>
-                                <h6>$ ${doc.data().price}</h6>
+                                <h5>{{nombre}}</h5>
+                                <h6>$ {{precio}}</h6>
                                 <button class="btn btn-success"><i class="fa fa-cart-plus" aria-hidden="true"></i>
                                     Add
                                     To Cart</button>
                             </div>
                         </div>
+                        {{/each}}
                     </div>
 
 
@@ -226,17 +231,18 @@
 
                             </div>
                         </div>
+                        {{#each product}}
                         <div id="chair">
-                            <img src="${doc.data().linkImagen}" class="img-fluid mr-3 w-50" alt="media1">
+                            <img src="/img/silla.png" class="img-fluid mr-3 w-50 mt-5" alt="media1">
                             <div class="media-body mt-2">
-                                <h5>${doc.data().name}</h5>
-                                <h6>$ ${doc.data().price}</h6>
+                                <h5>{{nombre}}</h5>
+                                <h6>$ {{precio}}</h6>
                                 <button class="btn btn-success"><i class="fa fa-cart-plus" aria-hidden="true"></i>
                                     Add
                                     To Cart</button>
                             </div>
-
                         </div>
+                        {{/each}}
 
 
                     </div>

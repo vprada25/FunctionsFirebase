@@ -41,6 +41,8 @@ router.get('/deleteProduct/:id', (req, res) => {
         });
 });
 
+//router.get('/productId/:id',controller.getProductId);
+
 router.get('/deleteUser/:id', (req, res) => {
 
     console.log(req.params.id);
