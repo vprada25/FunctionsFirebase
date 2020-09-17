@@ -1,5 +1,5 @@
 const { Router } = require('express');
-const { admin } = require('../controller/admin.controller');
+const { admin, login } = require('../controller/admin.controller');
 const router = Router();
 const { firebase } = require('../../configFirebase');
 const db = firebase.firestore();
@@ -9,12 +9,12 @@ const auth = require('../controller/auth.controller');
 
 
 //views
-
 router.get('/', controller.home);
 router.get('/about', controller.about)
 router.get('/login', controller.login)
 router.get('/register', controller.register)
 router.get('/admin', controller.admin)
+router.get('/Logout', controller.ControlLogin)
 
 
 

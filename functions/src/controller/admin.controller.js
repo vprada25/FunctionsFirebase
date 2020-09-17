@@ -224,8 +224,17 @@ controller.listUsers = (req, res) => {
 var emailUsuarioLogueado = "hola";
 
 controller.ControlLogin = (res, req) => {
+    console.log('--------holaaaa-----');
+    firebase.auth().signOut()
+    .then(() => {
+      console.log("Sesion cerrada exitosamente");
+      res.render('./layouts/admin/admin.hbs');
 
-console.log('----------------hola-----------------')
+    }).catch((error) => {
+      console.log(error.message)
+    });
+  
+
    
 }
 
