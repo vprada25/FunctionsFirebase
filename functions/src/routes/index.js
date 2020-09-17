@@ -10,7 +10,7 @@ const auth = require('../controller/auth.controller');
 
 
 //views
-router.get('/', [controller.home, controller.getProductId]);
+router.get('/', controller.home);
 
 
 router.get('/about', controller.about)
@@ -24,8 +24,8 @@ router.post('/admin/addproduct', controller.saveProduct)
 
 
 router.get('/login', controller.admin)
-router.get('/admin/getProduct', controller.getProduct)
-router.get('/admin/getUsers', controller.getUser)
+
+
 
 
 
@@ -40,7 +40,23 @@ router.get('/deleteProduct/:id', (req, res) => {
         });
 });
 
-//router.get('/productId/:id',controller.getProductId);
+router.get('/productId/:id', (req, res) => {
+
+
+    db.collection("producto").doc(req.params.id).get()
+        .then((doc) => {
+
+            req.body.nameproduct = doc.data().name;
+            req.body.priceproduct = doc.data().price;
+            req.body.categoryproduct = doc.data().category;
+            res.render('./layouts/admin/admin.hbs');
+        })
+        .catch((error) => {
+            console.log("Error: ", error);
+        });
+
+
+});
 
 router.get('/deleteUser/:id', (req, res) => {
 

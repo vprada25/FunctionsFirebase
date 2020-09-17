@@ -139,9 +139,9 @@
                                     </thead>
 
 
-                                    <form action="/admin/getProduct" method="get">
+                                    <form action="/" method="get">
                                         <button class="btn btn-primary openBtn" data-toggle="modal" type="submit">
-                                            ver productos
+                                            ver portafolio
                                         </button>
                                     </form>
                                     {{#each product}}
@@ -162,14 +162,14 @@
                                                 </button>
                                             </td>
                                         </form>
-
-                                        <td>
-                                            <button type="submit" data-target="#edit" class="btn btn-primary openBtn"
-                                                data-toggle="modal" class="btn btn-danger">
-                                                Editar
-                                            </button>
-                                        </td>
-
+                                        <form action="/productId/{{id}}" method="get">
+                                            <td>
+                                                <button type="submit" class="btn btn-primary openBtn"
+                                                    data-toggle="modal" class="btn btn-danger">
+                                                    Editar
+                                                </button>
+                                            </td>
+                                        </form>
 
                                         {{>modal}}
                                     </tbody>
@@ -197,9 +197,9 @@
                                             <th>Email </th>
                                         </tr>
                                     </thead>
-                                    <form action="/admin/getUsers" method="get">
+                                    <form action="/" method="get">
                                         <button class="btn btn-primary openBtn" data-toggle="modal" type="submit">
-                                            ver Usuarios
+                                            Ver Portafolio
                                         </button>
                                     </form>
                                     <input class="d-none" type="text" id="id">

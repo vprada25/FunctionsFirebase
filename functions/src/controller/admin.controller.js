@@ -5,7 +5,15 @@ const controller = {};
 const db = firebase.firestore();
 
 controller.home = async (req, res) => {
-    res.render('../views/index.hbs', { product: await getProduct() })
+    res.render('../views/index.hbs',
+        {
+            comedor: await getComedores(),
+            sala: await getSalas(),
+            alcoba: await getAlcobas(),
+            oficina: await getOficina(),
+            decoracion: await getDecoracion(),
+            silla: await getSillas()
+        })
 }
 
 controller.about = (req, res) => {
@@ -30,12 +38,18 @@ controller.register = (req, res) => {
 }
 
 controller.admin = async (req, res) => {
+    res.render('./layouts/admin/admin.hbs',
+        {
+            user: await getUser(),
+            product : await getProduct()
+        })
+
     firebase.auth().onAuthStateChanged(function (user) {
         if (user) {
-            res.render('./layouts/admin/admin.hbs');
+            console.log(user)
         }
         else {
-            res.render('./layouts/login/login.hbs');
+           console.log("error")
         }
     });
 }
@@ -54,8 +68,8 @@ controller.getComedor = async (req, res) => {
     res.render('../views/index.hbs', { comedor: await getComedores() })
 }
 
-controller.getProductId = async(req,res) =>{
-    res.render('./layouts/admin/admin.hbs',{productoID: await getProductId()})
+controller.getProductId = async (req, res) => {
+    res.render('./layouts/admin/admin.hbs', { productoID: await getProductId() })
 }
 
 /*controller.comedores = async (req, res) => {
@@ -65,6 +79,8 @@ controller.getProductId = async(req,res) =>{
 /*controller.deleteProduct = async (req, res) => {
     res.render(await deleteProduct())
 }*/
+
+
 
 
 const getUser = async () => {
@@ -206,6 +222,146 @@ const getComedores = async () => {
 
     })
 }
+const getSalas = async () => {
+    return new Promise(resolve => {
+        let listSalas = [];
+        db.collection("producto").where("categoria", "==", "SALAS").get()
+            .then(function (querySnapshot) {
+                querySnapshot.forEach(function (doc) {
+                    let id = doc.id;
+                    let nombre = doc.data().nombre;
+                    let precio = doc.data().precio;
+                    let categoria = doc.data().categoria;
+                    salas = {
+                        id: id,
+                        nombre: nombre,
+                        precio: precio,
+                        categoria: categoria
+                    }
+                    console.log(salas);
+                    listSalas.push(salas);
+                });
+                resolve(listSalas)
+                // console.log(listUser);
+            })
+            .catch(function (error) {
+                console.log("error :", error);
+            });
+
+    })
+}
+const getAlcobas = async () => {
+    return new Promise(resolve => {
+        let listAlcoba = [];
+        db.collection("producto").where("categoria", "==", "ALCOBAS").get()
+            .then(function (querySnapshot) {
+                querySnapshot.forEach(function (doc) {
+                    let id = doc.id;
+                    let nombre = doc.data().nombre;
+                    let precio = doc.data().precio;
+                    let categoria = doc.data().categoria;
+                    alcobas = {
+                        id: id,
+                        nombre: nombre,
+                        precio: precio,
+                        categoria: categoria
+                    }
+                    console.log(alcobas);
+                    listAlcoba.push(alcobas);
+                });
+                resolve(listAlcoba)
+                // console.log(listUser);
+            })
+            .catch(function (error) {
+                console.log("error :", error);
+            });
+
+    })
+}
+const getOficina = async () => {
+    return new Promise(resolve => {
+        let listoficina = [];
+        db.collection("producto").where("categoria", "==", "OFICINA").get()
+            .then(function (querySnapshot) {
+                querySnapshot.forEach(function (doc) {
+                    let id = doc.id;
+                    let nombre = doc.data().nombre;
+                    let precio = doc.data().precio;
+                    let categoria = doc.data().categoria;
+                    oficina = {
+                        id: id,
+                        nombre: nombre,
+                        precio: precio,
+                        categoria: categoria
+                    }
+                    console.log(oficina);
+                    listoficina.push(oficina);
+                });
+                resolve(listoficina)
+                // console.log(listUser);
+            })
+            .catch(function (error) {
+                console.log("error :", error);
+            });
+
+    })
+}
+const getDecoracion = async () => {
+    return new Promise(resolve => {
+        let listDecoracion = [];
+        db.collection("producto").where("categoria", "==", "DECORACION").get()
+            .then(function (querySnapshot) {
+                querySnapshot.forEach(function (doc) {
+                    let id = doc.id;
+                    let nombre = doc.data().nombre;
+                    let precio = doc.data().precio;
+                    let categoria = doc.data().categoria;
+                    decoracion = {
+                        id: id,
+                        nombre: nombre,
+                        precio: precio,
+                        categoria: categoria
+                    }
+                    console.log(decoracion);
+                    listDecoracion.push(decoracion);
+                });
+                resolve(listDecoracion)
+                // console.log(listUser);
+            })
+            .catch(function (error) {
+                console.log("error :", error);
+            });
+
+    })
+}
+const getSillas = async () => {
+    return new Promise(resolve => {
+        let listSillas = [];
+        db.collection("producto").where("categoria", "==", "SILLAS").get()
+            .then(function (querySnapshot) {
+                querySnapshot.forEach(function (doc) {
+                    let id = doc.id;
+                    let nombre = doc.data().nombre;
+                    let precio = doc.data().precio;
+                    let categoria = doc.data().categoria;
+                    silla = {
+                        id: id,
+                        nombre: nombre,
+                        precio: precio,
+                        categoria: categoria
+                    }
+                    console.log(silla);
+                    listSillas.push(silla);
+                });
+                resolve(listSillas)
+                // console.log(listUser);
+            })
+            .catch(function (error) {
+                console.log("error :", error);
+            });
+
+    })
+}
 
 
 
@@ -289,18 +445,12 @@ controller.listUsers = (req, res) => {
 
 }
 
-
 var emailUsuarioLogueado = "hola";
 
 controller.ControlLogin = (res, req) => {
 
 
-
 }
-
-
-
-
 
 
 
