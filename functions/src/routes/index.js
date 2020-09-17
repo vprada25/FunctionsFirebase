@@ -40,6 +40,23 @@ router.get('/deleteProduct/:id', (req, res) => {
         });
 });
 
+router.get('/productId/:id', (req, res) => {
+
+    console.log(req.params.id);
+    db.collection("producto").doc(req.params.id).get()
+        .then((doc) => {
+
+
+            res.body.nombreproducto = doc.data().nombre;
+            res.body.precioproducto = doc.data().precio;
+            res.body.categoria = doc.data().categoria;
+
+        })
+        .catch((error) => {
+            console.log("Error: ", error);
+        });
+});
+
 
 
 //services
