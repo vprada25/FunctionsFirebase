@@ -481,18 +481,18 @@ controller.modal = (req, res) => {
 
 
 
-controller.ControlUpdate = (res, req) => {
+controller.ControlUpdate = (req, res) => {
     console.log('de nuevo juega')
-        
-   db.collection("producto").doc(res.body.identificador).update({
-        nombre: res.body.nombreproducto,
-         precio:  res.body.precioproducto,
-        categoria:  res.body.categoriaproducto,
+        console.log(req.body)
+   db.collection("producto").doc(req.body.identificador).update({
+        nombre: req.body.nombreproducto,
+         precio:  req.body.precioproducto,
+        categoria:  req.body.categoriaproducto,
 
       })
         .then(() => {
           console.log("Document successfully updated!");
-        req.render('./layouts/admin/admin.hbs');
+      res.redirect('/admin');
 
        })
         .catch((error) => {
@@ -500,6 +500,7 @@ controller.ControlUpdate = (res, req) => {
         });
 
 }
+
 
 
 
