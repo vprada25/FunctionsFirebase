@@ -22,10 +22,7 @@ router.get('/admin', controller.admin)
 router.post('/register', controller.saveUser)
 router.post('/admin/addproduct', controller.saveProduct)
 
-
 router.get('/login', controller.admin)
-
-
 
 
 

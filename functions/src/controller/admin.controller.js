@@ -44,12 +44,14 @@ controller.register = (req, res) => {
     res.render('./layouts/register/register.hbs')
 }
 
+
 controller.admin = async (req, res) => {
      
 
         res.render('./layouts/admin/admin.hbs', {
-            user: await getUser(),
             product: await getProduct(),
+            user: await getUser()
+            
             })
     
 
