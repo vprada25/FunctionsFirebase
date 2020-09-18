@@ -79,7 +79,7 @@ router.get('/deleteUser/:id', (req, res) => {
 router.post('/register', controller.saveUser)
 router.post('/admin', auth.auth);
 
-router.post('/update',controller.ControlUpdate)
+router.post('/update',controller.ControlUpdate);
 
 
 module.exports = router;

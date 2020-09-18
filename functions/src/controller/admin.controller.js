@@ -483,19 +483,21 @@ controller.modal = (req, res) => {
 
 controller.ControlUpdate = (res, req) => {
     console.log('de nuevo juega')
+        
    db.collection("producto").doc(res.body.identificador).update({
         nombre: res.body.nombreproducto,
          precio:  res.body.precioproducto,
         categoria:  res.body.categoriaproducto,
+
       })
         .then(() => {
           console.log("Document successfully updated!");
-          req.render('./layouts/admin/admin.hbs')
-        })
-        .catch((error) => {
-          console.log("Error: ", error);
-        });
+        req.render('./layouts/admin/admin.hbs');
 
+       })
+        .catch((error) => {
+      console.log("Error: ", error);
+        });
 
 }
 
