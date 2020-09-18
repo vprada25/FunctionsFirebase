@@ -73,7 +73,6 @@ controller.modal = (req, res) => {
 
 
 controller.admin = async (req, res) => {
-     
 
         res.render('./layouts/admin/admin.hbs', {
             product: await getProduct(),
@@ -82,8 +81,6 @@ controller.admin = async (req, res) => {
             })
     
 
-       
-    
 }
 
 controller.getProduct = async (req, res) => {
@@ -137,7 +134,7 @@ const getUser = async () => {
                         segundoapellido: segundoapellido,
                         usuario: usuario,
                         contrasena: contrasena,
-                        emailUser : email
+                        emailUser: email
                     }
 
                     listUser.push(user)
@@ -445,7 +442,8 @@ controller.saveProduct = (req, res) => {
         .then((docRef) => {
             console.log("Document written with ID: ", docRef.id);
 
-            res.render('./layouts/admin/admin.hbs')})
+            res.redirect('/admin')
+        })
         .catch((error) => {
             console.error("Error: ", error);
         });
