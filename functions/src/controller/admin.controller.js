@@ -45,20 +45,16 @@ controller.register = (req, res) => {
 }
 
 controller.admin = async (req, res) => {
-    res.render('./layouts/admin/admin.hbs',
-        {
-            user: await getUser(),
-            product: await getProduct()
-        })
+     
 
-    firebase.auth().onAuthStateChanged(function (user) {
-        if (user) {
-            console.log(user)
-        }
-        else {
-            console.log("error")
-        }
-    });
+        res.render('./layouts/admin/admin.hbs', {
+            user: await getUser(),
+            product: await getProduct(),
+            })
+    
+
+       
+    
 }
 
 controller.getProduct = async (req, res) => {
@@ -430,7 +426,7 @@ controller.saveProduct = (req, res) => {
         .then((docRef) => {
             console.log("Document written with ID: ", docRef.id);
 
-            res.render('./layouts/admin/admin.hbs', Swal.fire('Good job!','You clicked the button!','success'))})
+            res.render('./layouts/admin/admin.hbs')})
         .catch((error) => {
             console.error("Error: ", error);
         });
