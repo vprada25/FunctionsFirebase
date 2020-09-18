@@ -11,6 +11,9 @@ Swal.fire(
     'success'
 )
 
+
+
+
 controller.home = async (req, res) => {
     res.render('../views/index.hbs',
         {
@@ -44,16 +47,49 @@ controller.register = (req, res) => {
     res.render('./layouts/register/register.hbs')
 }
 
+
+controller.modal = (req, res) => {
+
+   // res.render('./layouts/partials/modal.hbs',{id});
+        var id= req.params.id;
+        let listProduct = [];
+
+        console.log(id)
+        db.collection("producto").doc(id).get()
+            .then((doc) => {
+                var nombre = doc.data().nombre;
+                var precio = doc.data().precio;
+                var categoria = doc.data().categoria;
+               //  precio: doc.data().precio;
+              //   categoria: doc.data().categoria;
+                 console.log(nombre);
+                 console.log(categoria);
+                 console.log(precio);
+               
+                  res.render('./layouts/partials/modal.hbs',{nombre,categoria,precio});
+
+                console.log("----------------"+ listProduct)
+           })
+                .catch(function (error) {
+                console.log("error :", error);
+            })
+
+
+        }
+
+
+
+
+
+
 controller.admin = async (req, res) => {
 
-
-    res.render('./layouts/admin/admin.hbs', {
-        user: await getUser(),
-        product: await getProduct(),
-    })
-
-
-
+        res.render('./layouts/admin/admin.hbs', {
+            product: await getProduct(),
+            user: await getUser()
+            
+            })
+    
 
 }
 
@@ -448,7 +484,14 @@ controller.listUsers = (req, res) => {
 
 var emailUsuarioLogueado = "hola";
 
-controller.ControlLogin = (res, req) => {
+controller.ControlUpdate = (res, req) => {
+    console.log("Si llega hasta control Update")
+    var id=req.body.nombreproducto;
+    //var nombreproducto= req.body.nombreproducto;
+    
+    console.log(id);
+  //  console.log(nombreproducto);
+
 
 
 }

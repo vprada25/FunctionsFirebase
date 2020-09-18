@@ -1,26 +1,24 @@
-{{product}}
-<form action="" method="get">
-  <div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="editarLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
+  
           <h5 class="modal-title" id="editLabel">Actualizar
             Datos</h5>
-          <form id="addproducts" action="/productId/{{id}}" method="get">
-            <button type="submit" class="btn btn-secondary">Obtener Datos</button>
-
         </div>
+      <form action="/update" method="post">
         <div class="modal-body">
 
-
+            
           <div class="form-row">
             <div class="col-md-12 mb-3">
+              <label for="idProducto">identificador de producto</label>
+              <input id="ida"  name="id" type="text" readonly="readonly" class="form-control" value="{{id}}">
+            </div>
+
+            <div class="col-md-12 mb-3">
               <label for="nombreproducto">Nombre Producto</label>
-              <input name="nombreproducto" type="text" class="form-control" value="">
+              <input name="nombreproducto" type="text" class="form-control" value="{{nombre}}" >
             </div>
             <div class="col-md-12 mb-3">
               <label for="precioproducto">Precio</label>
-              <input name="precioproducto" type="number" class="form-control" value="">
+              <input name="precioproducto" type="number" class="form-control" value="{{precio}}" >
             </div>
           </div>
           <div class="form-row">
@@ -28,7 +26,7 @@
             <div class="col-md-12 mb-3">
               <label for="categoriaproducto">Categoria</label>
               <select class="custom-select" name="categoriaproducto">
-                <option selected disabled value=""></option>
+                <option selected disabled value="">{{categoria}}</option>
                 <option>COMEDORES</option>
                 <option>SALAS</option>
                 <option>ALCOBAS</option>
@@ -59,11 +57,8 @@
 
 
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-            <button type="button" class="btn btn-primary" data-dismiss="modal">confirmar</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">atras</button>
+            <button type="submit" class="btn btn-primary" data-dismiss="modal">confirmar</button>
           </div>
         </div>
-      </div>
-    </div>
-  </div>
-</form>
+    </form>
