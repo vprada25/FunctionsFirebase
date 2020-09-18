@@ -18,11 +18,16 @@ router.get('/login', controller.login)
 router.get('/register', controller.register)
 router.get('/admin', controller.admin)
 
+
+router.get('/modal/:id',controller.modal)
+
+
 //services
 router.post('/register', controller.saveUser)
 router.post('/admin/addproduct', controller.saveProduct)
 
 router.get('/login', controller.admin)
+
 
 
 
@@ -73,6 +78,12 @@ router.get('/deleteUser/:id', (req, res) => {
 //services
 router.post('/register', controller.saveUser)
 router.post('/admin', auth.auth);
+
+router.get('/update/:nombreproducto', (res, req) => {
+    
+
+
+});
 
 
 module.exports = router;
