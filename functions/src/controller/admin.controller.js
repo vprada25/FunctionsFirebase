@@ -60,36 +60,48 @@ controller.descripcion=(req,res)=>{
 
 controller.modal = (req, res) => {
 
-   // res.render('./layouts/partials/modal.hbs',{id});
-        var id= req.params.id;
+    // res.render('./layouts/partials/modal.hbs',{id});
+    var id = req.params.id;
 
-        console.log(id)
-        db.collection("producto").doc(id).get()
-            .then((doc) => {
-                var nombre = doc.data().nombre;
-                var precio = doc.data().precio;
-                var categoria = doc.data().categoria;
-                  res.render('./layouts/partials/modal.hbs',{nombre,categoria,precio});
-           })
-                .catch(function (error) {
-                console.log("error :", error);
-            })
+    console.log(id)
+    db.collection("producto").doc(id).get()
+        .then((doc) => {
+            var nombre = doc.data().nombre;
+            var precio = doc.data().precio;
+            var categoria = doc.data().categoria;
+            res.render('./layouts/partials/modal.hbs', { nombre, categoria, precio });
+        })
+        .catch(function (error) {
+            console.log("error :", error);
+        })
 
-        }
+}
 
+async function renderAdmin(req, res) {
+    res.render('./layouts/admin/admin.hbs', {
+        product: await getProduct(),
+        user: await getUser()
 
+    })
+}
 
 
 
 
 controller.admin = async (req, res) => {
+    firebase.auth().onAuthStateChanged((user) => {
+        if (user) {
+            console.log(user)
+            renderAdmin()
 
-        res.render('./layouts/admin/admin.hbs', {
-            product: await getProduct(),
-            user: await getUser()
-            
-            })
-    
+
+        }
+        else {
+            res.redirect('/login')
+
+        }
+    });
+
 
 }
 
@@ -474,39 +486,39 @@ controller.listUsers = (req, res) => {
 
 
 controller.modal = (req, res) => {
-         var id= req.params.id;
-         console.log(id)
-         db.collection("producto").doc(id).get()
-             .then((doc) => {
-                 var nombre = doc.data().nombre;
-                 var precio = doc.data().precio;
-                 var categoria = doc.data().categoria;
-                   res.render('./layouts/partials/modal.hbs',{nombre,categoria,precio,id});
-            })
-                 .catch(function (error) {
-                 console.log("error :", error);
-             })
- 
-         }
+    var id = req.params.id;
+    console.log(id)
+    db.collection("producto").doc(id).get()
+        .then((doc) => {
+            var nombre = doc.data().nombre;
+            var precio = doc.data().precio;
+            var categoria = doc.data().categoria;
+            res.render('./layouts/partials/modal.hbs', { nombre, categoria, precio, id });
+        })
+        .catch(function (error) {
+            console.log("error :", error);
+        })
+
+}
 
 
 
 controller.ControlUpdate = (req, res) => {
     console.log('de nuevo juega')
-        console.log(req.body)
-   db.collection("producto").doc(req.body.identificador).update({
+    console.log(req.body)
+    db.collection("producto").doc(req.body.identificador).update({
         nombre: req.body.nombreproducto,
-         precio:  req.body.precioproducto,
-        categoria:  req.body.categoriaproducto,
+        precio: req.body.precioproducto,
+        categoria: req.body.categoriaproducto,
 
-      })
+    })
         .then(() => {
-          console.log("Document successfully updated!");
-      res.redirect('/admin');
+            console.log("Document successfully updated!");
+            res.redirect('/admin');
 
-       })
+        })
         .catch((error) => {
-      console.log("Error: ", error);
+            console.log("Error: ", error);
         });
 
 }
