@@ -48,6 +48,16 @@ controller.register = (req, res) => {
 }
 
 
+
+controller.descripcion=(req,res)=>{
+    var nombre=req.body.nombre;
+    var precio= req.body.precio;
+    res.render('./layouts/partials/description.hbs',{nombre,precio});
+
+}
+
+
+
 controller.modal = (req, res) => {
 
    // res.render('./layouts/partials/modal.hbs',{id});
