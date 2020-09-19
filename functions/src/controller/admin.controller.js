@@ -84,6 +84,7 @@ controller.modal = (req, res) => {
 
 controller.admin = async (req, res) => {
 
+    
     var product = await getProduct();
     var users = await getUser()
 
