@@ -77,30 +77,18 @@ controller.modal = (req, res) => {
 
 }
 
-async function renderAdmin(req, res) {
-    res.render('./layouts/admin/admin.hbs', {
-        product: await getProduct(),
-        user: await getUser()
 
-    })
-}
 
 
 
 
 controller.admin = async (req, res) => {
-    firebase.auth().onAuthStateChanged((user) => {
-        if (user) {
-            console.log(user)
-            renderAdmin()
 
+    res.render('./layouts/admin/admin.hbs', {
+        product: await getProduct(),
+        user: await getUser()
 
-        }
-        else {
-            res.redirect('/login')
-
-        }
-    });
+    })
 
 
 }
