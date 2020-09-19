@@ -208,17 +208,25 @@
                                     <input class="d-none" type="text" id="id">
                                     {{#each users}}
                                     <tbody id="listusers">
+                                      
                                         <td>{{usuario}}</td>
                                         <td>{{primernombre}}</td>
                                         <td>{{segundonombre}}</td>
                                         <td>{{primerapellido}}</td>
                                         <td>{{segundoapellido}}</td>
                                         <td>{{emailUser}}</td>
+                                        <td name="id" class="d-none" {{id}}></td>
                                         <td>
-                                            <button type="button" class="btn btn-primary openBtn" data-toggle="modal"
-                                                data-target="#edit" onclick="edit('${doc.id}')">
-                                                Editar
-                                            </button>
+
+                                               <form action="/editUser/{{id}}" method="GET">
+                                                <td>
+                                                    <button type="submit" class="btn btn-primary openBtn"
+                                                         class="btn btn-danger">
+                                                        Editar
+                                                    </button>
+                                                </td>
+                                            </form>
+                                            
 
 
                                         </td>

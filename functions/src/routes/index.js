@@ -26,10 +26,8 @@ router.get('/modal/:id',controller.modal)
 //services
 router.post('/register', controller.saveUser)
 router.post('/admin/addproduct', controller.saveProduct)
-
 router.get('/login', controller.admin)
 
-router.post('/description',controller.descripcion)
 
 
 
@@ -73,6 +71,7 @@ router.get('/deleteUser/:id', (req, res) => {
             console.error("Error: ", error);
         });
 });
+router.get('/editUser/:id',controller.editUser)
 
 
 
@@ -81,8 +80,9 @@ router.get('/deleteUser/:id', (req, res) => {
 //services
 router.post('/register', controller.saveUser)
 router.post('/admin', controller.auth);
-
 router.post('/update',controller.ControlUpdate);
+router.post('/description',controller.descripcion)
+router.post('/updateUser',controller.UpdateUser);
 
 
 module.exports = router;

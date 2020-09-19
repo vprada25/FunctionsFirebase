@@ -1,0 +1,67 @@
+  
+          
+          <h5 class="modal-title" id="editLabel">Actualizar
+            Datos</h5>
+        </div>
+      <form action="/updateUser" method="post">
+        <div class="modal-body">
+             {{#each listUser}}
+            
+          <div class="form-row">
+            <div class="col-md-12 mb-3">
+              <label for="idProducto">identificador de usuario</label>
+              <input id="ida"  name="identificador" type="text" readonly="readonly" class="form-control" value="{{id}}">
+            </div>
+        
+            <div class="col-md-12 mb-3">
+              <label for="nombreproducto">Primer nombre</label>
+              <input name="primernombre" type="text" class="form-control" value="{{primernombre}}" >
+            </div>
+            <div class="col-md-12 mb-3">
+              <label for="precioproducto">Segundo nombre</label>
+              <input name="segundonombre" type="text" class="form-control" value="{{segundonombre}}" >
+            </div>
+            <div class="col-md-12 mb-3">
+              <label for="precioproducto">Primer apellido</label>
+              <input name="primerapellido" type="text" class="form-control" value="{{primerapellido}}" >
+            </div>
+            <div class="col-md-12 mb-3">
+              <label for="precioproducto">Segundo apellido</label>
+              <input name="segundoapellido" type="text" class="form-control" value="{{segundoapellido}}" >
+            </div>
+            <div class="col-md-12 mb-3">
+              <label for="precioproducto">Usuario</label>
+              <input name="usuario" type="text" class="form-control" value="{{usuario}}" >
+            </div>
+            
+          </div>
+           {{/each}}
+          <div class="form-row">
+
+            
+            <div class="col-md-12 mb-3">
+              <div class="form-group">
+                <label for="photoproduct1">Foto Producto</label>
+                <div class="input-group">
+                  <div class="custom-file">
+                    <input type="file" class="custom-file-input" id="archivo1" name="archivo1"
+                      aria-describedby="inputGroupFileAddon0">
+                    <label class="custom-file-label" for="inputGroupFile04">Elegir imagen</label>
+                  </div>
+                  <div class="input-group-append">
+                    <button class="btn btn-outline-secondary" type="button" id="inputGroupFileAddon0">subir
+                      Imagen</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">atras</button>
+            <button type="submit" class="btn btn-primary" data-dismiss="modal">confirmar</button>
+          </div>
+        </div>
+    </form>

@@ -1,4 +1,6 @@
-const { firebase } = require('../../configFirebase');
+const {
+    firebase
+} = require('../../configFirebase');
 
 const controller = {};
 
@@ -15,15 +17,14 @@ Swal.fire(
 
 
 controller.home = async (req, res) => {
-    res.render('../views/index.hbs',
-        {
-            comedor: await getComedores(),
-            sala: await getSalas(),
-            alcoba: await getAlcobas(),
-            oficina: await getOficina(),
-            decoracion: await getDecoracion(),
-            silla: await getSillas()
-        })
+    res.render('../views/index.hbs', {
+        comedor: await getComedores(),
+        sala: await getSalas(),
+        alcoba: await getAlcobas(),
+        oficina: await getOficina(),
+        decoracion: await getDecoracion(),
+        silla: await getSillas()
+    })
 }
 
 controller.about = (req, res) => {
@@ -52,7 +53,10 @@ controller.register = (req, res) => {
 controller.descripcion = (req, res) => {
     var nombre = req.body.nombre;
     var precio = req.body.precio;
-    res.render('./layouts/partials/description.hbs', { nombre, precio });
+    res.render('./layouts/partials/description.hbs', {
+        nombre,
+        precio
+    });
 
 }
 
@@ -69,7 +73,11 @@ controller.modal = (req, res) => {
             var nombre = doc.data().nombre;
             var precio = doc.data().precio;
             var categoria = doc.data().categoria;
-            res.render('./layouts/partials/modal.hbs', { nombre, categoria, precio });
+            res.render('./layouts/partials/modal.hbs', {
+                nombre,
+                categoria,
+                precio
+            });
         })
         .catch(function (error) {
             console.log("error :", error);
@@ -84,54 +92,54 @@ controller.modal = (req, res) => {
 
 controller.admin = async (req, res) => {
 
-    
     var product = await getProduct();
     var users = await getUser()
-
+    
     firebase.auth().onAuthStateChanged(function (user) {
         if (user) {
-            res.render('./layouts/admin/admin.hbs', {product, users
+            var email=user.email;
+            res.render('./layouts/admin/admin.hbs', {
+                email,
+                product,
+                users
             })
-        }
-        else {
+        } else {
             res.redirect('/login');
         }
-      });
+    });
 
 
-    res.render('./layouts/admin/admin.hbs', {product, users
-    })
+   /*  res.render('./layouts/admin/admin.hbs', {
+        product,
+        users
+    }) */
 
 
 }
 
 controller.getProduct = async (req, res) => {
-    res.render('./layouts/admin/admin.hbs',
-        { product: await getProduct() });
+    res.render('./layouts/admin/admin.hbs', {
+        product: await getProduct()
+    });
 }
 
 controller.getUser = async (req, res) => {
-    res.render('./layouts/admin/admin.hbs',
-        { user: await getUser() });
+    res.render('./layouts/admin/admin.hbs', {
+        user: await getUser()
+    });
 }
 
 controller.getComedor = async (req, res) => {
-    res.render('../views/index.hbs', { comedor: await getComedores() })
+    res.render('../views/index.hbs', {
+        comedor: await getComedores()
+    })
 }
 
 controller.getProductId = async (req, res) => {
-    res.render('./layouts/admin/admin.hbs', { productoID: await getProductId() })
+    res.render('./layouts/admin/admin.hbs', {
+        productoID: await getProductId()
+    })
 }
-
-/*controller.comedores = async (req, res) => {
-    res.render('index.hbs', { comedor: await getComedores() })
-}
-
-/*controller.deleteProduct = async (req, res) => {
-    res.render(await deleteProduct())
-}*/
-
-
 
 
 const getUser = async () => {
@@ -412,10 +420,10 @@ const getSillas = async () => {
 controller.act = (req, res) => {
     console.log(req.params.id);
     db.collection("producto").doc(req.params.id).update({
-        name: nameproduct1.value,
-        price: priceproduct1.value,
-        category: categoryproduct1.value,
-    })
+            name: nameproduct1.value,
+            price: priceproduct1.value,
+            category: categoryproduct1.value,
+        })
         .then(() => {
             console.log("Document successfully updated!");
             res.render('/admin');
@@ -430,14 +438,14 @@ controller.saveUser = (req, res) => {
     firebase.auth().createUserWithEmailAndPassword(req.body.emailUser, req.body.contrasena)
         .then(() => {
             db.collection("usuario").add({
-                usuario: req.body.usuario,
-                contrasena: req.body.contrasena,
-                primernombre: req.body.primernombre,
-                segundonombre: req.body.segundonombre,
-                primerapellido: req.body.primerapellido,
-                segundoapellido: req.body.segundoapellido,
-                emailUser: req.body.emailUser
-            })
+                    usuario: req.body.usuario,
+                    contrasena: req.body.contrasena,
+                    primernombre: req.body.primernombre,
+                    segundonombre: req.body.segundonombre,
+                    primerapellido: req.body.primerapellido,
+                    segundoapellido: req.body.segundoapellido,
+                    emailUser: req.body.emailUser
+                })
                 .then((docRef) => {
                     console.log("Document written with ID: ", docRef.id);
                     res.render('./layouts/login/login.hbs')
@@ -457,10 +465,10 @@ controller.saveUser = (req, res) => {
 controller.saveProduct = (req, res) => {
     console.log(req.body);
     db.collection("producto").add({
-        nombre: req.body.nameproduct,
-        precio: req.body.priceproduct,
-        categoria: req.body.categoryproduct,
-    })
+            nombre: req.body.nameproduct,
+            precio: req.body.priceproduct,
+            categoria: req.body.categoryproduct,
+        })
         .then((docRef) => {
             console.log("Document written with ID: ", docRef.id);
 
@@ -493,7 +501,12 @@ controller.modal = (req, res) => {
             var nombre = doc.data().nombre;
             var precio = doc.data().precio;
             var categoria = doc.data().categoria;
-            res.render('./layouts/partials/modal.hbs', { nombre, categoria, precio, id });
+            res.render('./layouts/partials/modal.hbs', {
+                nombre,
+                categoria,
+                precio,
+                id
+            });
         })
         .catch(function (error) {
             console.log("error :", error);
@@ -504,14 +517,13 @@ controller.modal = (req, res) => {
 
 
 controller.ControlUpdate = (req, res) => {
-    console.log('de nuevo juega')
     console.log(req.body)
     db.collection("producto").doc(req.body.identificador).update({
-        nombre: req.body.nombreproducto,
-        precio: req.body.precioproducto,
-        categoria: req.body.categoriaproducto,
+            nombre: req.body.nombreproducto,
+            precio: req.body.precioproducto,
+            categoria: req.body.categoriaproducto,
 
-    })
+        })
         .then(() => {
             console.log("Document successfully updated!");
             res.redirect('/admin');
@@ -536,8 +548,11 @@ controller.auth = async (req, res) => {
     firebase.auth().signInWithEmailAndPassword(email, contrasena)
         .then((user) => {
             console.log('Sesion Inciada');
+            console.log(email);
             res.render('./layouts/admin/admin.hbs', {
-                email, product,users
+                email,
+                product,
+                users
             });
 
 
@@ -549,10 +564,58 @@ controller.auth = async (req, res) => {
 
 
         });
-
-
 }
 
+controller.editUser = (req, res) => {
+    var id = req.params.id;
+    let listUser = [];
+
+    db.collection("usuario").doc(id).get()
+        .then((doc) => {
+            let primernombre = doc.data().primernombre;
+            let segundonombre = doc.data().segundonombre;
+            let primerapellido = doc.data().primerapellido;
+            let segundoapellido = doc.data().segundoapellido;
+            let email = doc.data().emailUser;
+            let usuario = doc.data().usuario;
+            user = {
+                id: id,
+                primernombre: primernombre,
+                segundonombre: segundonombre,
+                primerapellido: primerapellido,
+                segundoapellido: segundoapellido,
+                usuario: usuario,
+                emailUser: email
+            }
+            listUser.push(user)
+            res.render('./layouts/partials/editUser.hbs', {
+                listUser
+            });
+        })
+        .catch(function (error) {
+            console.log("error :", error);
+        })
+
+}
+controller.UpdateUser = (req, res) => {
+    console.log(req.body)
+    db.collection("usuario").doc(req.body.identificador).update({
+            primernombre: req.body.primernombre,
+            segundonombre: req.body.segundonombre,
+            primerapellido: req.body.primerapellido,
+            segundoapellido: req.body.segundoapellido,
+            usuario: req.body.usuario,
+        })
+        .then(() => {
+            console.log("User successfully updated!");
+            res.redirect('/admin');
+
+        })
+        .catch((error) => {
+            console.log("Error: ", error);
+        });
+
+}
 
 
 
