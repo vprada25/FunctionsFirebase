@@ -177,8 +177,10 @@
         <div class="container mt-5 pb-5">
             <div class="row" id="bedroom">
                 {{#each alcoba}}
-                <form action="/description" method="post">
-                    <div class="col-md-3">
+
+
+                <div class="col-md-3">
+                    <form action="/description" method="post">
                         <div class="card">
                             <img src="/img/alcoba.png" alt="card-1" class="card-img-top">
                             <div class="card-body">
@@ -191,9 +193,10 @@
                                     Cart</button>
                             </div>
                         </div>
-                    </div>
-                </form>
-                    {{/each}}
+                    </form>
+                </div>
+
+                {{/each}}
             </div>
 
 
@@ -214,22 +217,22 @@
                         </div>
 
                         {{#each oficina}}
-                    <form action="/description" method="post">
-                        <div id="office">
-                            <img src="/img/oficina.png" class="img-fluid mr-3
+                        <form action="/description" method="post">
+                            <div id="office">
+                                <img src="/img/oficina.png" class="img-fluid mr-3
                                 w-50 mt-5" alt="media1">
-                            <div class="media-body mt-2">
-                                <h5>{{nombre}}</h5>
-                                <input type="hidden" name="nombre" value="{{nombre}}"></input>
-                                <h6>$ {{precio}}</h6>
-                                <input type="hidden" name="precio" value="{{precio}}"></input>
-                                <button type="submit" class="btn btn-success"><i class="fa
+                                <div class="media-body mt-2">
+                                    <h5>{{nombre}}</h5>
+                                    <input type="hidden" name="nombre" value="{{nombre}}"></input>
+                                    <h6>$ {{precio}}</h6>
+                                    <input type="hidden" name="precio" value="{{precio}}"></input>
+                                    <button type="submit" class="btn btn-success"><i class="fa
                                         fa-cart-plus" aria-hidden="true"></i>
-                                    Add
-                                    To Cart</button>
-                            </div>
+                                        Add
+                                        To Cart</button>
+                                </div>
 
-                        </div>
+                            </div>
                         </form>
                         {{/each}}
 
@@ -244,18 +247,18 @@
                         </div>
                         {{#each decoracion}}
                         <form action="/description" method="post">
-                        <div id="decoration">
-                            <img src="/img/decoración.png" class="img-fluid mr-3
+                            <div id="decoration">
+                                <img src="/img/decoración.png" class="img-fluid mr-3
                                 w-50 mt-5" alt="media1">
-                            <div class="media-body mt-2">
-                                <h5>{{nombre}}</h5>
-                                <h6>$ {{precio}}</h6>
-                                <button type="submit" class="btn btn-success"><i class="fa
+                                <div class="media-body mt-2">
+                                    <h5>{{nombre}}</h5>
+                                    <h6>$ {{precio}}</h6>
+                                    <button type="submit" class="btn btn-success"><i class="fa
                                         fa-cart-plus" aria-hidden="true"></i>
-                                    Add
-                                    To Cart</button>
+                                        Add
+                                        To Cart</button>
+                                </div>
                             </div>
-                        </div>
                         </form>
                         {{/each}}
                     </div>
@@ -266,7 +269,7 @@
                         <div class="row">
                             <h4>SILLAS</h4>
                         </div>
-                        
+
                         <div class="row">
                             <div class="underline-black">
 
@@ -274,18 +277,18 @@
                         </div>
                         {{#each silla}}
                         <form action="/description" method="post">
-                        <div id="chair">
-                            <img src="/img/silla.png" class="img-fluid mr-3 w-50
+                            <div id="chair">
+                                <img src="/img/silla.png" class="img-fluid mr-3 w-50
                                 mt-5" alt="media1">
-                            <div class="media-body mt-2">
-                                <h5>{{nombre}}</h5>
-                                <h6>$ {{precio}}</h6>
-                                <button type="submit" class="btn btn-success"><i class="fa
+                                <div class="media-body mt-2">
+                                    <h5>{{nombre}}</h5>
+                                    <h6>$ {{precio}}</h6>
+                                    <button type="submit" class="btn btn-success"><i class="fa
                                         fa-cart-plus" aria-hidden="true"></i>
-                                    Add
-                                    To Cart</button>
+                                        Add
+                                        To Cart</button>
+                                </div>
                             </div>
-                        </div>
                         </form>
                         {{/each}}
 
