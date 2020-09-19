@@ -21,28 +21,6 @@ controller.admin = (req, res) => {
 
 
 
-controller.auth=(req, res)=>{
- 
-  var email=req.body.email;
-  var contrasena=req.body.contrasena;
-
-  firebase.auth().signInWithEmailAndPassword(email, contrasena)
-  .then((user) => {
-    console.log('Sesion Inciada');
-    res.render('./layouts/admin/admin.hbs',{email});
-   
-
-       }).catch(function (error) {
-             
-             console.log("Error: ", error.message);
-             
-           res.render('./layouts/login/login.hbs');
-
-      
-           });
-
-   
-}
 
 
 

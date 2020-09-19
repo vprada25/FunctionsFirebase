@@ -49,10 +49,10 @@ controller.register = (req, res) => {
 
 
 
-controller.descripcion=(req,res)=>{
-    var nombre=req.body.nombre;
-    var precio= req.body.precio;
-    res.render('./layouts/partials/description.hbs',{nombre,precio});
+controller.descripcion = (req, res) => {
+    var nombre = req.body.nombre;
+    var precio = req.body.precio;
+    res.render('./layouts/partials/description.hbs', { nombre, precio });
 
 }
 
@@ -86,7 +86,7 @@ controller.admin = async (req, res) => {
 
     res.render('./layouts/admin/admin.hbs', {
         product: await getProduct(),
-        user: await getUser()
+        users: await getUser()
 
     })
 
@@ -508,6 +508,36 @@ controller.ControlUpdate = (req, res) => {
         .catch((error) => {
             console.log("Error: ", error);
         });
+
+}
+
+
+controller.auth = async (req, res) => {
+
+    var email = req.body.email;
+    var contrasena = req.body.contrasena;
+
+    var product = await getProduct();
+    var users = await getUser();
+
+
+    firebase.auth().signInWithEmailAndPassword(email, contrasena)
+        .then((user) => {
+            console.log('Sesion Inciada');
+            res.render('./layouts/admin/admin.hbs', {
+                email, product,users
+            });
+
+
+        }).catch(function (error) {
+
+            console.log("Error: ", error.message);
+
+            res.render('./layouts/login/login.hbs');
+
+
+        });
+
 
 }
 
