@@ -88,13 +88,13 @@
 
                     {{#if categoria}}
                     <form action="/description" method="post">
-
+                        <script> var x = 'hola';</script>
                         <div class="card">
                             <img src="/img/comedor.png" alt="card-1" class="card-img-top"></img>
 
                             <div class="card-body">
                                 <h5>{{nombre}}</h5>
-                                <input type="hidden" name="nombre" value="{{nombre}}"></input>
+                                <input type="hidden" name="nombre" value="{{nombre}}"></input> 
 
                                 <h6> {{precio}}</h6>
                                 <input type="hidden" name="precio" value="{{precio}}"></input>

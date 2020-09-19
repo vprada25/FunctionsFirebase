@@ -99,10 +99,11 @@
                                                 <label for="photoproduct">Foto Producto</label>
                                                 <div class="input-group">
                                                     <div class="custom-file">
-                                                        <input type="file" class="custom-file-input" id="archivo"
-                                                            name="archivo" aria-describedby="inputGroupFileAddon04">
-                                                        <label class="custom-file-label" for="inputGroupFile04">Elegir
-                                                            imagen</label>
+                                                        <div class="custom-file">
+                                                            <input type="file" name="image">
+                                                            <label class="custom-file-label"
+                                                                for="inputGroupFile04">Elegir imagen</label>
+                                                        </div>
 
                                                         <div class="input-group-append">
                                                             <button class="btn btn-outline-secondary" type="button"
@@ -126,10 +127,10 @@
 
 
                             <!-- LISTAR PRODUCTOS -->
-                            
-                                <div class="tab-pane fade hidden" id="v-pills-listproduct" role="tabpanel"
-                                    aria-labelledby="v-pills-product-tab">
-                                    <table class="table-responsive">
+
+                            <div class="tab-pane fade hidden" id="v-pills-listproduct" role="tabpanel"
+                                aria-labelledby="v-pills-product-tab">
+                                <table class="table-responsive">
                                     <table class="table  table-bordered table-hover ">
                                         <thead class="thead-dark">
                                             <tr>
@@ -166,25 +167,25 @@
                                             <form action="/modal/{{id}}" method="get">
                                                 <td>
                                                     <button type="submit" class="btn btn-primary openBtn"
-                                                         class="btn btn-danger">
+                                                        class="btn btn-danger">
                                                         Editar
                                                     </button>
                                                 </td>
                                             </form>
 
-                                            
+
                                         </tbody>
 
                                         {{/each}}
 
                                     </table>
-                                    </table>
+                                </table>
 
 
 
 
-                                </div>
-                            
+                            </div>
+
 
                             <div class="tab-pane fade" id="v-pills-users" role="tabpanel"
                                 aria-labelledby="v-pills-product-tab">
@@ -208,7 +209,7 @@
                                     <input class="d-none" type="text" id="id">
                                     {{#each users}}
                                     <tbody id="listusers">
-                                      
+
                                         <td>{{usuario}}</td>
                                         <td>{{primernombre}}</td>
                                         <td>{{segundonombre}}</td>
@@ -218,15 +219,15 @@
                                         <td name="id" class="d-none" {{id}}></td>
                                         <td>
 
-                                               <form action="/editUser/{{id}}" method="GET">
-                                                <td>
-                                                    <button type="submit" class="btn btn-primary openBtn"
-                                                         class="btn btn-danger">
-                                                        Editar
-                                                    </button>
-                                                </td>
-                                            </form>
-                                            
+                                            <form action="/editUser/{{id}}" method="GET">
+                                        <td>
+                                            <button type="submit" class="btn btn-primary openBtn"
+                                                class="btn btn-danger">
+                                                Editar
+                                            </button>
+                                        </td>
+                                        </form>
+
 
 
                                         </td>
