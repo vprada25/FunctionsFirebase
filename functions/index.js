@@ -5,8 +5,7 @@ const exphbs = require('express-handlebars');
 const app = express();
 const path = require('path');
 
-
-
+// CommonJS
 
 
 

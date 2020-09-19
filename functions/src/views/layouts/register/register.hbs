@@ -10,12 +10,13 @@
                 <img src="/img/userr.png" alt="">
             </div>
 
-            <form class="col-12">
+            <form class="col-12" method="post" action="/register">
+
                 <div class="form-group" id="user-group">
-                    <input type="text" id="usuario" class="form-control" placeholder="Nombre de usuario">
+                    <input type="text" name="usuario" class="form-control" placeholder="Nombre de usuario">
                 </div>
                 <div class="form-group" id="password-group">
-                    <input type="password" id="contrasena" class="form-control" placeholder="Contraseña">
+                    <input type="password" name="contrasena" class="form-control" placeholder="Contraseña">
                 </div>
 
 
@@ -24,13 +25,13 @@
 
                         <div class="form-group" id="Nombre-group">
 
-                            <input type="text" id="primernombre" class="form-control" placeholder="Primer nombre">
+                            <input type="text" name="primernombre" class="form-control" placeholder="Primer nombre">
                         </div>
 
                     </div>
                     <div class="col-sm-6">
                         <div class=" form-group" id="Nombre2-group">
-                            <input type="text" id="segundonombre" class="form-control" placeholder="Segundo nombre">
+                            <input type="text" name="segundonombre" class="form-control" placeholder="Segundo nombre">
                         </div>
                     </div>
 
@@ -39,29 +40,24 @@
 
                 <div class="row">
                     <div class="col-sm-6">
-
                         <div class="form-group" id="Apellido-group">
-                            <input type="text" id="primerapellido" class="form-control" placeholder="Primer apellido">
+                            <input type="text" name="primerapellido" class="form-control" placeholder="Primer apellido">
                         </div>
 
                     </div>
-                    <div class="col-sm-6" >
-                                        <div class=" form-group" id="Apellido2-group">
-                        <input type="text" id="segundoapellido" class="form-control" placeholder="Segundo apellido">
+                    <div class="col-sm-6">
+                        <div class=" form-group" id="Apellido2-group">
+                            <input type="text" name="segundoapellido" class="form-control"
+                                placeholder="Segundo apellido">
+                        </div>
                     </div>
                 </div>
+                <div class="form-group" id="correo-group">
+                    <input name="emailUser" type="text" class="form-control"
+                        placeholder="Ingrese su correo electronico ">
+                </div>
+                <button onclick="" type="submit" class="btn btn-primary"><i
+                        class="fas fa-sign-in-alt"></i>Registrar</button>
+            </form>
 
         </div>
-
-
-
-
-
-        <div class="form-group" id="correo-group">
-            <input id="emailUser" type="text" class="form-control" placeholder="Ingrese su correo electronico ">
-        </div>
-
-
-        </form>
-        <button onclick="agregarDatos()" class="btn btn-primary"><i class="fas fa-sign-in-alt"></i>Registrar</button>
-    </div>

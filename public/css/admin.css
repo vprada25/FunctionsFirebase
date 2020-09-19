@@ -101,6 +101,10 @@ a:hover {
     padding: -0.5rem 0rem;
 }
 
+section{
+    overflow: hidden;
+}
+
 @media (max-width: 768px) {
     #sidebar-container {
         display: none;

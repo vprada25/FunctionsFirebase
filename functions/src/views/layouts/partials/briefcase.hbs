@@ -1,7 +1,10 @@
 <link rel="stylesheet" href="/css/briefcase.css">
 
+
+
+
 <div class="briefcase">
-    <div class="container-fluid  header-top d-none d-md-block"></div>
+    <div class="container-fluid header-top d-none d-md-block"></div>
     <div class="container">
         <div class="row text-dark pt-2 pb-2">
             <div class="col-md-5"><i class="fa fa-envelope-o" aria-hidden="true"></i>
@@ -12,26 +15,34 @@
             <div class="col-md-3">
 
             </div>
-            <div class="col-md-2"><i class="fa fa-user-o" aria-hidden="true"></i> Cuenta</div>
-            <div class="col-md-2"><i class="fa fa-cart-plus" aria-hidden="true"></i> Carrito - $0.00</div>
+            <div class="col-md-2"><i class="fa fa-user-o" aria-hidden="true"></i>
+                Cuenta</div>
+            <div class="col-md-2"><i class="fa fa-cart-plus" aria-hidden="true"></i>
+                Carrito - $0.00</div>
         </div>
     </div>
 </div>
 
-<div class=" container">
+<div class="container">
     <div class="row">
         <div class="col-md-8 mb-5">
             <h2>Nuestro Portafolio</h2>
             <hr>
-            <p class="text-justify">Somos una empresa que cuenta con más de 40 años de experiencia en el sector de
+            <p class="text-justify">Somos una empresa que cuenta con más de 40
+                años de experiencia en el sector de
                 la fabricación y
-                diseño de mobiliario. Nuestras especialidades en este sector son el mueble de hogar y estancias de
+                diseño de mobiliario. Nuestras especialidades en este sector son
+                el mueble de hogar y estancias de
                 trabajo.</p>
-            <p class="text-justify">Diseñar y realizar nos conduce a unas líneas, cada vez más, rectas y armónicas.
+            <p class="text-justify">Diseñar y realizar nos conduce a unas
+                líneas, cada vez más, rectas y armónicas.
                 Es por ello que
-                ofrecemos un diseño visual y funcional en nuestros muebles, con un acabado limpio y robusto, todo
-                ello gracias a la calidad, detalles y construcción que aportamos. Todo nuestro trabajo se encuentra
-                enfocado a la vanguardia combinada con la comodidad del día a día.</p>
+                ofrecemos un diseño visual y funcional en nuestros muebles, con
+                un acabado limpio y robusto, todo
+                ello gracias a la calidad, detalles y construcción que
+                aportamos. Todo nuestro trabajo se encuentra
+                enfocado a la vanguardia combinada con la comodidad del día a
+                día.</p>
         </div>
         <div class="col-md-4 mb-5">
             <h2>Contactanos</h2>
@@ -70,23 +81,39 @@
 
 
         <div class="container mt-5">
+
             <div class="row" id="getdiningroom">
+                {{#each comedor}}
                 <div class="col-md-3">
-                    <div class="card">
-                        <img src="" alt="card-1" class="card-img-top">
-                        <div class="card-body">
-                            <h5></h5>
-                            <h6>$ </h6>
-                            <button class="btn btn-danger"><i class="fa fa-cart-plus" aria-hidden="true"></i>
-                                Comprar</button>
+
+                    {{#if categoria}}
+                    <form action="/description" method="post">
+
+                        <div class="card">
+                            <img src="/img/comedor.png" alt="card-1" class="card-img-top"></img>
+
+                            <div class="card-body">
+                                <h5>{{nombre}}</h5>
+                                <input type="hidden" name="nombre" value="{{nombre}}"></input>
+
+                                <h6> {{precio}}</h6>
+                                <input type="hidden" name="precio" value="{{precio}}"></input>
+
+
+                                <button type="submit" class="btn btn-danger"><i class="fa fa-cart-plus"
+                                        aria-hidden="true"></i>
+                                    Comprar</button>
+
+
+                            </div>
+
+
                         </div>
-                    </div>
+                    </form>
+                    {{/if}}
                 </div>
+                {{/each}}
             </div>
-
-
-
-
         </div>
 
 
@@ -104,17 +131,30 @@
 
         <div class="container mt-5 pb-5">
             <div class="row" id="getroom">
+                {{#each sala}}
                 <div class="col-md-3">
-                    <div class="card">
-                        <img src="${doc.data().linkImagen}" alt="card-1" class="card-img-top">
-                        <div class="card-body">
-                            <h5>${doc.data().name}</h5>
-                            <h6>$ ${doc.data().price}</h6>
-                            <button class="btn btn-danger"><i class="fa fa-cart-plus" aria-hidden="true"></i>
-                                Comprar</button>
+                    {{#if categoria}}
+                    <form action="/description" method="post">
+
+                        <div class="card">
+                            <img src="/img/sala.png" alt="card-1" class="card-img-top">
+
+                            <div class="card-body">
+                                <h5>{{nombre}}</h5>
+                                <input type="hidden" name="nombre" value="{{nombre}}"></input>
+                                <h6> {{precio}}</h6>
+                                <input type="hidden" name="precio" value="{{precio}}"></input>
+                                <button type="submit" class="btn btn-danger"><i class="fa
+                                    fa-cart-plus" aria-hidden="true"></i>
+                                    Comprar</button>
+
+                            </div>
+
                         </div>
-                    </div>
+                    </form>
+                    {{/if}}
                 </div>
+                {{/each}}
 
 
 
@@ -136,20 +176,24 @@
 
         <div class="container mt-5 pb-5">
             <div class="row" id="bedroom">
-
-
-                <div class="col-md-3">
-                    <div class="card">
-                        <img src="${doc.data().linkImagen}" alt="card-1" class="card-img-top">
-                        <div class="card-body">
-                            <h5>${doc.data().name}</h5>
-                            <h6>$ ${doc.data().price}</h6>
-                            <button class="btn btn-danger"><i class="fa fa-cart-plus" aria-hidden="true"></i> Add To
-                                Cart</button>
+                {{#each alcoba}}
+                <form action="/description" method="post">
+                    <div class="col-md-3">
+                        <div class="card">
+                            <img src="/img/alcoba.png" alt="card-1" class="card-img-top">
+                            <div class="card-body">
+                                <h5>{{nombre}}</h5>
+                                <input type="hidden" name="nombre" value="{{nombre}}"></input>
+                                <h6>$ {{precio}}</h6>
+                                <input type="hidden" name="precio" value="{{precio}}"></input>
+                                <button type="submit" class="btn btn-danger"><i class="fa
+                                    fa-cart-plus" aria-hidden="true"></i> Add To
+                                    Cart</button>
+                            </div>
                         </div>
                     </div>
-                </div>
-
+                </form>
+                    {{/each}}
             </div>
 
 
@@ -159,25 +203,35 @@
         <div class="container-fluid pt-5 pb-5">
             <div class="container">
                 <div class="row">
+
                     <div class="col-md-4">
+
                         <div class="row">
                             <h4>OFICINA</h4>
                         </div>
                         <div class="row">
                             <div class="underline-green"></div>
                         </div>
+
+                        {{#each oficina}}
+                    <form action="/description" method="post">
                         <div id="office">
-                            <img src="${doc.data().linkImagen}" class="img-fluid mr-3 w-50" alt="media1">
+                            <img src="/img/oficina.png" class="img-fluid mr-3
+                                w-50 mt-5" alt="media1">
                             <div class="media-body mt-2">
-                                <h5>${doc.data().name}</h5>
-                                <h6>$ ${doc.data().price}</h6>
-                                <button class="btn btn-success"><i class="fa fa-cart-plus" aria-hidden="true"></i> Add
+                                <h5>{{nombre}}</h5>
+                                <input type="hidden" name="nombre" value="{{nombre}}"></input>
+                                <h6>$ {{precio}}</h6>
+                                <input type="hidden" name="precio" value="{{precio}}"></input>
+                                <button type="submit" class="btn btn-success"><i class="fa
+                                        fa-cart-plus" aria-hidden="true"></i>
+                                    Add
                                     To Cart</button>
                             </div>
 
-
-
                         </div>
+                        </form>
+                        {{/each}}
 
                     </div>
 
@@ -188,15 +242,22 @@
                         <div class="row">
                             <div class="underline-blue"></div>
                         </div>
+                        {{#each decoracion}}
+                        <form action="/description" method="post">
                         <div id="decoration">
-                            <img src="${doc.data().linkImagen}" class="img-fluid mr-3 w-50" alt="media1">
+                            <img src="/img/decoración.png" class="img-fluid mr-3
+                                w-50 mt-5" alt="media1">
                             <div class="media-body mt-2">
-                                <h5>${doc.data().name}</h5>
-                                <h6>$ ${doc.data().price}</h6>
-                                <button class="btn btn-success"><i class="fa fa-cart-plus" aria-hidden="true"></i> Add
+                                <h5>{{nombre}}</h5>
+                                <h6>$ {{precio}}</h6>
+                                <button type="submit" class="btn btn-success"><i class="fa
+                                        fa-cart-plus" aria-hidden="true"></i>
+                                    Add
                                     To Cart</button>
                             </div>
                         </div>
+                        </form>
+                        {{/each}}
                     </div>
 
 
@@ -205,21 +266,28 @@
                         <div class="row">
                             <h4>SILLAS</h4>
                         </div>
+                        
                         <div class="row">
                             <div class="underline-black">
 
                             </div>
                         </div>
+                        {{#each silla}}
+                        <form action="/description" method="post">
                         <div id="chair">
-                            <img src="${doc.data().linkImagen}" class="img-fluid mr-3 w-50" alt="media1">
+                            <img src="/img/silla.png" class="img-fluid mr-3 w-50
+                                mt-5" alt="media1">
                             <div class="media-body mt-2">
-                                <h5>${doc.data().name}</h5>
-                                <h6>$ ${doc.data().price}</h6>
-                                <button class="btn btn-success"><i class="fa fa-cart-plus" aria-hidden="true"></i> Add
+                                <h5>{{nombre}}</h5>
+                                <h6>$ {{precio}}</h6>
+                                <button type="submit" class="btn btn-success"><i class="fa
+                                        fa-cart-plus" aria-hidden="true"></i>
+                                    Add
                                     To Cart</button>
                             </div>
-
                         </div>
+                        </form>
+                        {{/each}}
 
 
                     </div>
@@ -250,7 +318,9 @@
                             <div class="card-body">
                                 <h4>OTRO</h4>
                                 <h6>$67.87</h6>
-                                <button class="btn btn-danger"><i class="fa fa-cart-plus" aria-hidden="true"></i> Add To
+                                <button class="btn btn-danger"><i class="fa
+                                        fa-cart-plus" aria-hidden="true"></i>
+                                    Add To
                                     Cart</button>
                             </div>
                         </div>
@@ -262,7 +332,9 @@
                             <div class="card-body">
                                 <h4>OTRO</h4>
                                 <h6>$67.87</h6>
-                                <button class="btn btn-danger"><i class="fa fa-cart-plus" aria-hidden="true"></i> Add To
+                                <button class="btn btn-danger"><i class="fa
+                                        fa-cart-plus" aria-hidden="true"></i>
+                                    Add To
                                     Cart</button>
                             </div>
                         </div>
@@ -274,7 +346,9 @@
                             <div class="card-body">
                                 <h4>OTRO</h4>
                                 <h6>$67.87</h6>
-                                <button class="btn btn-danger"><i class="fa fa-cart-plus" aria-hidden="true"></i> Add To
+                                <button class="btn btn-danger"><i class="fa
+                                        fa-cart-plus" aria-hidden="true"></i>
+                                    Add To
                                     Cart</button>
                             </div>
                         </div>
@@ -286,7 +360,9 @@
                             <div class="card-body">
                                 <h4>OTRO</h4>
                                 <h6>$67.87</h6>
-                                <button class="btn btn-danger"><i class="fa fa-cart-plus" aria-hidden="true"></i> Add To
+                                <button class="btn btn-danger"><i class="fa
+                                        fa-cart-plus" aria-hidden="true"></i>
+                                    Add To
                                     Cart</button>
                             </div>
                         </div>
@@ -301,5 +377,7 @@
 
 
         </div>
+
+
     </div>
 </div>
