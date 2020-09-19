@@ -70,6 +70,7 @@ controller.modal = (req, res) => {
 async function renderAdmin(req, res) {
     res.render('./layouts/admin/admin.hbs', {
         product: await getProduct(),
+        
         user: await getUser()
 
     })
