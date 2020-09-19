@@ -9,6 +9,7 @@ const auth = require('../controller/auth.controller');
 
 
 
+
 //views
 router.get('/', controller.home);
 
@@ -27,6 +28,8 @@ router.post('/register', controller.saveUser)
 router.post('/admin/addproduct', controller.saveProduct)
 
 router.get('/login', controller.admin)
+
+router.post('/description',controller.descripcion)
 
 
 
