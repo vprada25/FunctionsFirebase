@@ -80,7 +80,7 @@ router.get('/deleteUser/:id', (req, res) => {
 
 //services
 router.post('/register', controller.saveUser)
-router.post('/admin', auth.auth);
+router.post('/admin', controller.auth);
 
 router.post('/update',controller.ControlUpdate);
 
